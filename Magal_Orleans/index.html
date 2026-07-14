@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magal Touba à Orléans - Gestion Globale</title>
+    
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
+
+    <style>
+        :root {
+            --primary: #4b3621;       
+            --primary-light: #fdfbf7; 
+            --secondary: #8c6239;     
+            --accent: #d9a05b;        
+            --dark: #261c14;          
+            --success: #2e7d32;       
+            --danger: #c62828;        
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fcfaf2;
+            margin: 0;
+            padding: 0;
+            color: var(--dark);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #fdfbf7;
+            text-align: center;
+            padding: 10px 25px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .header h1 { margin: 0; font-size: 1.8rem; }
+        .header-right { display: flex; align-items: center; gap: 15px; }
+
+        .badge-date {
+            background-color: var(--accent);
+            color: var(--primary);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .menu-nav { display: flex; gap: 8px; }
+
+        .btn-menu {
+            background-color: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 6px 14px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-menu:hover, .btn-menu.active {
+            background-color: var(--accent);
+            color: var(--primary);
+            border-color: var(--accent);
+        }
+
+        .page-content {
+            flex: 1; width: 100%; height: calc(100vh - 65px); position: relative;
+        }
+
+        .view-section {
+            display: none; width: 100%; height: 100%; box-sizing: border-box; padding: 20px;
+        }
+
+        .view-section.active { display: block; }
+
+        #view-accueil { 
+            display: none; 
+            background-color: #261c14; 
+            position: relative;
+            padding: 0;
+            flex-direction: column;
+        }
+        #view-accueil.active { display: flex; }
+        
+        .poster-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .full-poster {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            object-position: center;
+        }
+
+        .overlay-arabic-message {
+            position: absolute;
+            top: 20px;
+            left: 5%;
+            right: 5%;
+            background: rgba(38, 28, 20, 0.85); 
+            color: #fdfbf7;
+            padding: 12px 25px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 2rem; 
+            font-weight: bold;
+            border: 2px solid var(--accent);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+            direction: rtl; 
+            font-family: 'Amiri', 'Traditional Arabic', Georgia, serif;
+            z-index: 10;
+        }
+
+        .grid-layout {
+            display: grid; grid-template-columns: 1fr 1.8fr; gap: 15px; height: 100%;
+        }
+
+        .card-panel {
+            background: white; border-radius: 12px; padding: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid #e0d8c8; display: flex; flex-direction: column;
+        }
+
+        .card-panel h2 {
+            margin-top: 0; margin-bottom: 12px; color: var(--primary); border-bottom: 3px solid var(--accent); padding-bottom: 5px; font-size: 1.2rem;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+
+        .kamil-container {
+            background: var(--primary-light); padding: 15px; border-radius: 10px; border: 1px solid #e0d8c8; display: flex; justify-content: space-between; align-items: center;
+        }
+
+        .kamil-value { font-size: 2.8rem; font-weight: bold; color: var(--primary); }
+
+        .objectif-chiffre-box {
+            font-size: 1.1rem;
+            color: #c62828 !important; 
+            font-weight: 800 !important;
+            margin-top: 6px;
+            display: block;
+        }
+
+        .qasaid-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 8px; overflow-y: auto; padding-right: 5px; flex: 1;
+        }
+
+        .qasaid-item {
+            display: flex; align-items: center; justify-content: space-between; background: #fff; padding: 10px 14px; border-radius: 8px; border: 1px solid #e0d8c8;
+        }
+
+        .qasaid-item h3 { margin: 0; font-size: 1rem; color: var(--primary); font-weight: 700; }
+        
+        .counter-box { display: flex; align-items: center; gap: 10px; }
+
+        .score-display {
+            font-size: 1.8rem; font-weight: bold; color: var(--secondary); min-width: 50px; text-align: right;
+        }
+
+        .admin-btn-grid { display: none; gap: 4px; margin-top: 5px; }
+        .btn-mini { border: none; padding: 3px 6px; font-size: 0.75rem; font-weight: bold; cursor: pointer; border-radius: 4px; }
+        .btn-mini-saisie { background-color: var(--secondary); color: white; }
+        .btn-mini-obj { background-color: #e2e8f0; color: #4a5568; }
+        
+        .btn-action-rep {
+            display: none; color: white; border-radius: 50%; width: 32px; height: 32px; align-items: center; justify-content: center; font-size: 1.3rem; cursor: pointer; border: none; font-weight: bold;
+        }
+        .btn-rep-plus { background-color: var(--success); }
+
+        .btn-ajouter-xassida {
+            display: none; background-color: var(--success); color: white; border: none; padding: 6px 12px; font-size: 0.85rem; font-weight: bold; border-radius: 5px; cursor: pointer;
+        }
+
+        .giant-card {
+            background: white; width: 96%; height: 95%; margin: 0 auto; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); border: 2px solid var(--accent); padding: 25px 40px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between; text-align: center;
+        }
+
+        .xassida-title { font-size: 3.8rem; color: var(--primary); margin: 0; font-weight: 800; text-transform: uppercase; border-bottom: 5px solid var(--accent); padding-bottom: 10px; }
+        .stats-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 25px; margin: 15px 0; }
+        .stat-box { background: var(--primary-light); border: 1px solid #e0d8c8; padding: 15px; border-radius: 15px; }
+        .stat-label { font-size: 1.4rem; color: #555; font-weight: 600; margin-bottom: 5px; text-transform: uppercase; }
+        .stat-number { font-size: 4.8rem; font-weight: 900; color: var(--dark); }
+        .stat-box.reste-box { background-color: #f1f8e9; border-color: #c5e1a5; }
+        .stat-box.reste-box .stat-number { color: var(--success); }
+
+        .progress-container { background-color: #e0e0e0; border-radius: 30px; height: 45px; width: 100%; position: relative; overflow: hidden; }
+        .progress-bar { background: linear-gradient(90deg, var(--secondary), var(--accent)); height: 100%; width: 0%; border-radius: 30px; transition: width 0.8s; }
+        .progress-text { position: absolute; width: 100%; height: 100%; top: 0; left: 0; display: flex; justify-content: center; align-items: center; font-size: 1.5rem; font-weight: bold; }
+
+        .admin-controls-inline { display: none; justify-content: center; gap: 15px; margin-top: 10px; padding-top: 10px; border-top: 1px dashed #ccc; }
+        .btn-admin-action { border: none; padding: 10px 20px; font-size: 1.1rem; font-weight: bold; border-radius: 8px; cursor: pointer; }
+        .btn-plus { background-color: #2e7d32; color: white; }
+        .btn-saisie { background-color: var(--secondary); color: white; }
+        .btn-obj { background-color: #cfd8dc; color: #263238; }
+
+        .nav-controls { position: absolute; bottom: 20px; width: 96%; left: 2%; display: flex; justify-content: space-between; pointer-events: none; }
+        .btn-nav { background: var(--primary); color: white; border: none; padding: 10px 20px; font-size: 1.2rem; font-weight: bold; border-radius: 10px; cursor: pointer; pointer-events: auto; }
+        
+        #admin-kamil-box-actions { display: none; margin-top: 10px; }
+        
+        .image-container-kamil {
+            margin-top: 15px; text-align: center; flex: 1; display: flex; justify-content: center; align-items: center; overflow: hidden; border-radius: 10px; width: 100%;
+        }
+        .image-container-kamil img {
+            width: 100%; height: 100%; min-height: 280px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+    </style>
+
+    <script>
+        // Configuration Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyBD9ko00MvYxp-IyLlmmWArEvIdm2ouXj8",
+            authDomain: "magal-e1fc2.firebaseapp.com",
+            databaseURL: "https://magal-e1fc2-default-rtdb.europe-west1.firebasedatabase.app/", // URL corrigée de votre base Realtime
+            projectId: "magal-e1fc2",
+            storageBucket: "magal-e1fc2.firebasestorage.app",
+            messagingSenderId: "724650850502",
+            appId: "1:724650850502:web:7acb0252011b77651b3fc7",
+            measurementId: "G-GT4YD8HK5M"
+        };
+
+        let dbRef;
+        let xassidas = [
+            { id: 'kamil', nom: 'Lectures du Saint Coran (Kamil)' },
+            { id: 'muhadimat_amdax', nom: 'Muqaddimatul Amdah' },
+            { id: 'muhadimatul_hidma', nom: 'Muqaddimatul Khidma' },
+            { id: 'mimiya', nom: 'Mimiya' },
+            { id: 'jeuzbou', nom: 'Jasbul Quloub (Jeuzbou)' },
+            { id: 'mawahibou', nom: 'Mawahibou' },
+            { id: 'midadi', nom: 'Midadi' },
+            { id: 'taysir', nom: 'Taysir' },
+            { id: 'mafatihul_bichri', nom: 'Mafatihul Bichri' },
+            { id: 'marahib', nom: 'Marahib' },
+            { id: 'nourou_darayni', nom: 'Nourou Darayni' },
+            { id: 'matlabul_fawzeyni', nom: 'Matlabul Fawzayni' },
+            { id: 'wakana', nom: 'Wakana Haqqan' },
+            { id: 'touhfatou', nom: 'Touhfatou' },
+            { id: 'sindidi', nom: 'Sindidi' },
+            { id: 'astakhfirul_laha', nom: "Astakhfirul'laha bihi" },
+            { id: 'jawartou', nom: 'Jawartou' },
+            { id: 'salatou_halannabi', nom: 'Salatul alan Nabi' }
+        ];
+
+        let currentIndex = 0;
+        let globalData = {};
+        let autoPlayInterval = null;
+        let isAdminActive = false;
+
+        function checkAdminStatus() {
+            const params = new URLSearchParams(window.location.search);
+            const adminParam = params.get('admin');
+            if (adminParam && adminParam.toLowerCase() === 'magal-touba-orleans-2026') {
+                isAdminActive = true;
+            }
+        }
+
+        function applyAdminVisibility() {
+            const displayStyle = isAdminActive ? 'flex' : 'none';
+            document.querySelectorAll('.admin-btn-grid').forEach(b => b.style.display = displayStyle);
+            document.querySelectorAll('.btn-action-rep').forEach(b => b.style.display = isAdminActive ? 'flex' : 'none');
+            
+            if(document.getElementById('admin-kamil-box')) document.getElementById('admin-kamil-box').style.display = displayStyle;
+            if(document.getElementById('admin-kamil-box-actions')) document.getElementById('admin-kamil-box-actions').style.display = displayStyle;
+            if(document.getElementById('btn-add-xassida')) document.getElementById('btn-add-xassida').style.display = isAdminActive ? 'block' : 'none';
+            
+            const adminControlsInline = document.querySelector('.admin-controls-inline');
+            if(adminControlsInline) adminControlsInline.style.display = displayStyle;
+        }
+
+        function getDefaultObj(id) {
+            const defaults = { kamil: 28, astakhfirul_laha: 313, salatou_halannabi: 150000, jeuzbou: 114, mawahibou: 114, wakana: 114, touhfatou: 114, sindidi: 114, nourou_darayni: 28, matlabul_fawzeyni: 28 };
+            return defaults[id] || 92;
+        }
+
+        const formatNumber = (num) => String(num).replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+
+        function buildGridHTMLStructure() {
+            const gridContainer = document.getElementById("dynamic-qasaid-grid");
+            if (!gridContainer) return;
+            
+            gridContainer.innerHTML = "";
+            const displayStyle = isAdminActive ? 'flex' : 'none';
+            
+            xassidas.forEach(x => {
+                if (x.id === 'kamil') return;
+                
+                const defaultObjective = getDefaultObj(x.id);
+
+                const itemHTML = `
+                    <div class="qasaid-item">
+                        <div>
+                            <h3>${x.nom}</h3>
+                            <span class="objectif-chiffre-box">Objectif : <span id="grid-obj-${x.id}">${formatNumber(defaultObjective)}</span></span>
+                            <div class="admin-btn-grid" style="display: ${displayStyle}">
+                                <button class="btn-mini btn-mini-saisie" onclick="modifierSaisie('${x.id}', '${x.nom.replace(/'/g, "\\'")}')">Saisie</button>
+                                <button class="btn-mini btn-mini-obj" onclick="modifierObjectif('${x.id}', '${x.nom.replace(/'/g, "\\'")}')">Obj</button>
+                            </div>
+                        </div>
+                        <div class="counter-box">
+                            <div class="score-display" id="grid-val-${x.id}">0</div>
+                            <button class="btn-action-rep btn-rep-plus" onclick="incrementerDirect('${x.id}')" style="display: ${displayStyle}">+</button>
+                        </div>
+                    </div>
+                `;
+                gridContainer.insertAdjacentHTML('beforeend', itemHTML);
+            });
+        }
+
+        function renderAll() {
+            if (!globalData) globalData = {};
+
+            // Synchronisation Kamil
+            const kamilLu = parseInt(globalData.kamil) || 0;
+            const kamilObj = parseInt(globalData.obj_kamil) || 28;
+            if(document.getElementById("kamil-val")) document.getElementById("kamil-val").innerText = formatNumber(kamilLu);
+            if(document.getElementById("obj-kamil")) document.getElementById("obj-kamil").innerText = formatNumber(kamilObj);
+
+            // Synchronisation de la grille
+            xassidas.forEach(x => {
+                if(x.id === 'kamil') return;
+                const lu = parseInt(globalData[x.id]) || 0;
+                const obj = globalData[`obj_${x.id}`] !== undefined ? parseInt(globalData[`obj_${x.id}`]) : getDefaultObj(x.id);
+                
+                const valElem = document.getElementById(`grid-val-${x.id}`);
+                const objElem = document.getElementById(`grid-obj-${x.id}`);
+                
+                if(valElem) valElem.innerText = formatNumber(lu);
+                if(objElem) objElem.innerText = formatNumber(obj);
+            });
+
+            // Synchronisation de la vue Géante
+            if (xassidas.length > 0) {
+                if (currentIndex >= xassidas.length) currentIndex = 0;
+                const current = xassidas[currentIndex];
+                if(document.getElementById("xassida-name")) document.getElementById("xassida-name").innerText = current.nom;
+
+                const luGiant = parseInt(globalData[current.id]) || 0;
+                const objGiant = globalData[`obj_${current.id}`] !== undefined ? parseInt(globalData[`obj_${current.id}`]) : getDefaultObj(current.id);
+                
+                let resteGiant = objGiant - luGiant;
+                if (resteGiant < 0) resteGiant = 0;
+
+                let pourcentGiant = objGiant > 0 ? Math.round((luGiant / objGiant) * 100) : 0;
+                if (pourcentGiant > 100) pourcentGiant = 100;
+
+                if(document.getElementById("val-objectif")) document.getElementById("val-objectif").innerText = formatNumber(objGiant);
+                if(document.getElementById("val-lu")) document.getElementById("val-lu").innerText = formatNumber(luGiant);
+                if(document.getElementById("val-reste")) document.getElementById("val-reste").innerText = formatNumber(resteGiant);
+                if(document.getElementById("progress-bar")) document.getElementById("progress-bar").style.width = pourcentGiant + "%";
+                if(document.getElementById("progress-text")) document.getElementById("progress-text").innerText = pourcentGiant + "% Accomplis";
+            }
+        }
+
+        window.switchPage = function(pageId) {
+            document.querySelectorAll('.view-section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.btn-menu').forEach(b => b.classList.remove('active'));
+            document.getElementById(`view-${pageId}`).classList.add('active');
+            if (window.event && window.event.currentTarget) {
+                window.event.currentTarget.classList.add('active');
+            }
+            if (pageId === 'geant') {
+                if(!autoPlayInterval) {
+                    autoPlayInterval = setInterval(() => { changeXassida(1); }, 15000);
+                }
+            } else {
+                clearInterval(autoPlayInterval);
+                autoPlayInterval = null;
+            }
+        };
+
+        window.changeXassida = function(direction) {
+            currentIndex += direction;
+            if (currentIndex < 0) currentIndex = xassidas.length - 1;
+            if (currentIndex >= xassidas.length) currentIndex = 0;
+            renderAll();
+        };
+
+        // INCRÉMENTATION DIRECTE SANS FENÊTRE POP-UP (+1 AUTOMATIQUE)
+        window.incrementerDirect = function(id) {
+            const actuel = parseInt(globalData[id]) || 0;
+            const nouvelleValeur = actuel + 1;
+            
+            // Écriture directe forcée dans le noeud
+            dbRef.child(id).set(nouvelleValeur, (error) => {
+                if (error) {
+                    alert("ERREUR D'ÉCRITURE : " + error.message + "\nAssurez-vous d'avoir publié des règles publiques (.write: true) sur Firebase.");
+                }
+            });
+        };
+
+        // SAISIE MANUELLE (Affiche la fenêtre pop-up de saisie ici uniquement)
+        window.modifierSaisie = function(id, nom) {
+            const actuel = parseInt(globalData[id]) || 0;
+            const nouveau = prompt(`Saisir manuellement le nombre total pour ${nom} :`, actuel);
+            if (nouveau !== null && nouveau.trim() !== "") {
+                const valeurNum = parseInt(nouveau) || 0;
+                dbRef.child(id).set(valeurNum, (error) => {
+                    if (error) alert("ERREUR DE SAISIE : " + error.message);
+                });
+            }
+        };
+
+        // MODIFIER L'OBJECTIF
+        window.modifierObjectif = function(id, nom) {
+            const dbKey = (id === 'kamil') ? 'obj_kamil' : `obj_${id}`;
+            const actuelObj = globalData[dbKey] !== undefined ? parseInt(globalData[dbKey]) : getDefaultObj(id);
+            const nouvelObj = prompt(`Saisir l'OBJECTIF pour ${nom} :`, actuelObj);
+            if (nouvelObj !== null && nouvelObj.trim() !== "") {
+                const valeurNum = parseInt(nouvelObj) || 0;
+                dbRef.child(dbKey).set(valeurNum, (error) => {
+                    if (error) alert("ERREUR OBJECTIF : " + error.message);
+                });
+            }
+        };
+
+        window.ajouterNouvelleXassida = function() {
+            const nom = prompt("Entrez le nom de la nouvelle Xassida :");
+            if (!nom) return;
+            const objectif = prompt(`Entrez l'objectif numérique pour ${nom} :`, "92");
+            if (!objectif) return;
+
+            const id = nom.toLowerCase().trim()
+                          .replace(/[éèêë]/g, "e")
+                          .replace(/[àâä]/g, "a")
+                          .replace(/[^a-z0-9_]/g, "_")
+                          .replace(/__+/g, "_");
+
+            if (xassidas.find(x => x.id === id)) {
+                alert("Cette Xassida existe déjà !");
+                return;
+            }
+            xassidas.push({ id: id, nom: nom });
+            buildGridHTMLStructure();
+            applyAdminVisibility();
+            
+            dbRef.child('_liste_structure').set(xassidas);
+            dbRef.child(`obj_${id}`).set(parseInt(objectif) || 92);
+            dbRef.child(id).set(0);
+        };
+
+        window.adminPlusOneGiant = function() { 
+            const id = xassidas[currentIndex].id;
+            incrementerDirect(id);
+        };
+        window.adminModifierSaisieGiant = function() { modifierSaisie(xassidas[currentIndex].id, xassidas[currentIndex].nom); };
+        window.adminModifierObjectifGiant = function() { modifierObjectif(xassidas[currentIndex].id, xassidas[currentIndex].nom); };
+
+        window.addEventListener('DOMContentLoaded', () => {
+            checkAdminStatus();
+            
+            if (!firebase.apps.length) {
+                firebase.initializeApp(firebaseConfig);
+            }
+            dbRef = firebase.database().ref("compteurs");
+
+            buildGridHTMLStructure();
+            applyAdminVisibility();
+
+            // Écoute des changements en temps réel
+            dbRef.on("value", (snapshot) => {
+                globalData = snapshot.val() || {};
+                
+                if (globalData._liste_structure && globalData._liste_structure.length > 0) {
+                    if (JSON.stringify(xassidas) !== JSON.stringify(globalData._liste_structure)) {
+                        xassidas = globalData._liste_structure;
+                        buildGridHTMLStructure();
+                        applyAdminVisibility();
+                    }
+                }
+                renderAll();
+            }, (error) => {
+                alert("ERREUR CONNEXION FIREBASE : " + error.message + "\nVérifiez vos règles d'accès.");
+            });
+        });
+    </script>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Grand Magal de Touba à Orléans</h1>
+        <div class="header-right">
+            <span class="badge-date">Dimanche 2 Août</span>
+            <div class="menu-nav">
+                <button class="btn-menu active" onclick="switchPage('accueil')">1. Accueil</button>
+                <button class="btn-menu" onclick="switchPage('liste')">2. Liste & Objectifs</button>
+                <button class="btn-menu" onclick="switchPage('geant')">3. Option Géante (Plein Écran)</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-content">
+        
+        <div id="view-accueil" class="view-section active">
+            <div class="poster-container">
+                <div class="overlay-arabic-message">
+                    وقض حوائج الذين داموا &nbsp; فِي خِدْمَتِي وَهَبْ لَهُمْ مَا رَامُوا
+                </div>
+                <img src="photo-magal.jpeg" alt="Affiche Grand Magal" class="full-poster">
+            </div>
+        </div>
+
+        <div id="view-liste" class="view-section">
+            <div class="grid-layout">
+                <div class="card-panel">
+                    <h2>Lectures du Saint Coran</h2>
+                    <div class="kamil-container">
+                        <div>
+                            <span style="font-weight: bold; font-size:1.1rem; color: var(--primary); display:block;">Kamil (Coran)</span>
+                            <span class="objectif-chiffre-box">Objectif : <span id="obj-kamil">28</span></span>
+                            <div class="admin-btn-grid" id="admin-kamil-box">
+                                <button class="btn-mini btn-mini-saisie" onclick="modifierSaisie('kamil', 'Coran')">Saisie</button>
+                                <button class="btn-mini btn-mini-obj" onclick="modifierObjectif('kamil', 'Coran')">Obj</button>
+                            </div>
+                        </div>
+                        <div class="kamil-value" id="kamil-val">0</div>
+                    </div>
+                    
+                    <div id="admin-kamil-box-actions">
+                        <button class="btn-mini-saisie" onclick="incrementerDirect('kamil')" style="width:100%; padding:10px; border-radius:6px; border:none; font-weight:bold; cursor:pointer; background-color: var(--success); color: white;">+ Ajouter Kamil</button>
+                    </div>
+                    
+                    <div class="image-container-kamil">
+                        <img src="photo-magal.jpeg" alt="Affiche Magal">
+                    </div>
+                </div>
+
+                <div class="card-panel">
+                    <h2>
+                        <span>Suivi des Lectures (Diyari Kurel)</span>
+                        <button id="btn-add-xassida" class="btn-ajouter-xassida" onclick="ajouterNouvelleXassida()">+ Ajouter Xassida</button>
+                    </h2>
+                    <div class="qasaid-grid" id="dynamic-qasaid-grid"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="view-geant" class="view-section">
+            <div class="giant-card">
+                <h2 class="xassida-title" id="xassida-name">CHARGEMENT...</h2>
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <span class="stat-label">Objectif</span>
+                        <span class="stat-number" id="val-objectif">0</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">Récités</span>
+                        <span class="stat-number" id="val-lu">0</span>
+                    </div>
+                    <div class="stat-box reste-box">
+                        <span class="stat-label">Reste</span>
+                        <span class="stat-number" id="val-reste">0</span>
+                    </div>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar" id="progress-bar"></div>
+                    <div class="progress-text" id="progress-text">0% Accomplis</div>
+                </div>
+                <div class="admin-controls-inline">
+                    <button class="btn-admin-action btn-plus" onclick="adminPlusOneGiant()">+ 1 Récité</button>
+                    <button class="btn-admin-action btn-saisie" onclick="adminModifierSaisieGiant()">Saisie Manuelle</button>
+                    <button class="btn-admin-action btn-obj" onclick="adminModifierObjectifGiant()">Modifier Objectif</button>
+                </div>
+            </div>
+            <div class="nav-controls">
+                <button class="btn-nav" onclick="changeXassida(-1)">◀ Précédent</button>
+                <button class="btn-nav" onclick="changeXassida(1)">Suivant ▶</button>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
