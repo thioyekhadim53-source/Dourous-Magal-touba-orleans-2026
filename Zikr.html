@@ -128,7 +128,7 @@
     </div>
 
     <script>
-        // Lien Firebase synchronisé en direct
+        // Configuration connectée à votre projet Firebase
         const firebaseConfig = {
             databaseURL: "https://dahira-touba-orleans-default-rtdb.europe-west1.firebasedatabase.app/" 
         };
@@ -136,7 +136,7 @@
         firebase.initializeApp(firebaseConfig);
         const db = firebase.database();
 
-        // Base de données nettoyée de toutes les lettres parasites (L, N, K...)
+        // TOUTES LES LETTRES PARASITES ONT ÉTÉ SUPPRIMÉES (L, N, K, etc.)
         const zikrsParDefaut = [
             { id: 1, nom: "Soubhanallah", estSalat: false, texte: "<span class='arabic-text text-3xl font-bold block text-center' dir='rtl'>سُبْحَانَ اللَّهِ</span><hr class='my-2.5 border-amber-200'><p class='text-xs text-amber-950 text-center italic font-bold'>(« Gloire à Allah »)</p>", compteur: 0 },
             { id: 2, nom: "Soubhanallahi wa bihamdihi", estSalat: false, texte: "<span class='arabic-text text-3xl font-bold block text-center' dir='rtl'>سُبْحَانَ اللَّهِ وَبِحَمْدِهِ</span><hr class='my-2.5 border-amber-200'><p class='text-xs text-amber-950 text-center italic font-bold'>(« Gloire et louange à Allah »)</p>", compteur: 0 },
@@ -148,7 +148,7 @@
                 id: 7,
                 nom: "Salat de Khadimou Rassoul",
                 estSalat: true,
-                texte: "<div class='custom-scroll max-h-60 overflow-y-auto px-1'><span class='arabic-text text-xl font-bold block text-center mb-3 leading-relaxed' dir='rtl'>بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ<br>اللَّهُمَّ بِحَقِّ وَجْهِكَ الْكَرِيمِ صَلِّ وَسَلِّمْ وَبَارِكْ عَلَىٰ سَيِّدِنَا وَمَوْLَانَا مُحَمَّدٍ وَعَلَىٰ آلِهِ وَصَحْبِهِ وَهَبْ لِشَيْخِنَا أَحْمَدَ ابْنِ مُحَمَّدٍ ابْنِ حَبِيبِ اللَّهِ مَا نَوَاهُ لِنَفْسِهِ وَلِأُمَّةِ رَسُولِ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ وَبَارِكْ مَا نَوَاهُ الشَّيْخُ أَحْمَدُ ابْنِ مُحَمَّدٍ اللَّهُمَّ يَا مُجِيبَ يَا رَبَّ الْعَالَمِينَ إِنَّكَ أَنْتَ الْوَهَّاب</span><hr class='my-2.5 border-amber-200'><p class='text-[11px] text-amber-950 text-left italic leading-relaxed font-bold font-sans bg-amber-100/60 p-2.5 rounded-lg border border-amber-200/50'>Bismillahir Rahmanir Rahim. Au nom d'Allah, le Tout Miséricordieux, le Très Miséricordieux. Ô Allah, par le droit de Ton Visage Généreux, bénis et accorde Ta paix à notre maître Muhammad, sa famille et ses compagnons...</p></div>",
+                texte: "<div class='custom-scroll max-h-60 overflow-y-auto px-1'><span class='arabic-text text-xl font-bold block text-center mb-3 leading-relaxed' dir='rtl'>بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ<br>اللَّهُمَّ بِحَقِّ وَجْهِكَ الْكَرِيمِ صَلِّ وَسَلِّمْ وَبَارِكْ عَلَىٰ سَيِّدِنَا وَمَوْلَانَا مُحَمَّدٍ وَعَلَىٰ آلِهِ وَصَحْبِهِ وَهَبْ لِشَيْخِنَا أَحْمَدَ ابْنِ مُحَمَّدٍ ابْنِ حَبِيبِ اللَّهِ مَا نَوَاهُ لِنَفْسِهِ وَلِأُمَّةِ رَسُولِ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ وَبَارِكْ مَا نَوَاهُ الشَّيْخُ أَحْمَدُ ابْنِ مُحَمَّدٍ اللَّهُمَّ يَا مُجِيبَ يَا رَبَّ الْعَالَمِينَ إِنَّكَ أَنْتَ الْوَهَّاب</span><hr class='my-2.5 border-amber-200'><p class='text-[11px] text-amber-950 text-left italic leading-relaxed font-bold font-sans bg-amber-100/60 p-2.5 rounded-lg border border-amber-200/50'>Bismillahir Rahmanir Rahim. Au nom d'Allah, le Tout Miséricordieux, le Très Miséricordieux. Ô Allah, par le droit de Ton Visage Généreux, bénis et accorde Ta paix à notre maître Muhammad, sa famille et ses compagnons...</p></div>",
                 compteur: 0
             },
             { 
@@ -171,7 +171,7 @@
         let modeAdminActif = false;
         let clicsTitre = 0;
 
-        // Branchement Firebase direct
+        // Synchronisation en temps réel collective
         db.ref('zikrs').on('value', (snapshot) => {
             const data = snapshot.val();
             if (!data) {
@@ -273,6 +273,7 @@
             if (zikr) { sauvegarder(id, zikr.compteur + 1); }
         }
 
+        // Décrémenter sans descendre en dessous de zéro
         function decrementer(id) {
             const zikr = zikrs.find(z => z.id === id);
             if (zikr && zikr.compteur > 0) { sauvegarder(id, zikr.compteur - 1); }
@@ -287,7 +288,7 @@
             }
         }
 
-        function ouvrirAjouterZikr() { document.getElementById('modal-ajout').style.display = 'flex'; }
+        function abrirAjouterZikr() { document.getElementById('modal-ajout').style.display = 'flex'; }
         function fermerAjouterZikr() {
             document.getElementById('modal-ajout').style.display = 'none';
             document.getElementById('nouveau-nom').value = '';
