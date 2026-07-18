@@ -34,8 +34,7 @@
             border-color: #854d0e !important;
         }
         .bg-accueil-pleine-page {
-            /* Remplacement du filtre noir par un filtre marron chaleureux sur l'image */
-            background: linear-gradient(rgba(74, 44, 17, 0.4), rgba(43, 23, 6, 0.6)), url('photo-magal.jpeg') !important;
+            background: linear-gradient(rgba(74, 44, 17, 0.45), rgba(67, 36, 9, 0.65)), url('photo-magal.jpeg') !important;
             background-size: cover !important;
             background-position: center !important;
             background-repeat: no-repeat !important;
@@ -48,82 +47,82 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between">
 
-    <header class="bg-gradient-to-b from-[#4a2c11] to-[#2b1706] text-white py-8 shadow-2xl text-center px-4 relative border-b-2 border-amber-500/40 z-10">
-        <h1 onclick="activerCodeSecret()" class="text-3xl md:text-4xl font-extrabold tracking-widest text-amber-100 uppercase cursor-pointer select-none">
+    <header class="bg-[#4a2c11] text-white py-8 shadow-2xl text-center px-4 relative border-b-2 border-[#b4860b]/40 z-10">
+        <h1 onclick="activerCodeSecret()" class="text-3xl md:text-4xl font-extrabold tracking-widest text-[#fbf6eb] uppercase cursor-pointer select-none">
             COMPTEUR DE ZIKR
         </h1>
-        <p class="text-amber-400/80 mt-1.5 text-xs md:text-sm font-bold tracking-widest uppercase">
+        <p class="text-[#dfd2b9] mt-1.5 text-xs md:text-sm font-bold tracking-widest uppercase">
             Magal Touba à Orléans • Édition 2026
         </p>
         
         <div class="mt-5 flex justify-center gap-4">
-            <button onclick="changerOnglet('accueil')" id="btn-onglet-accueil" class="bg-amber-600 px-5 py-2 rounded-xl text-xs font-bold transition-all border border-amber-500 tracking-wider">
+            <button onclick="changerOnglet('accueil')" id="btn-onglet-accueil" class="bg-[#b4860b] text-[#4a2c11] px-5 py-2 rounded-xl text-xs font-bold transition-all border border-[#936c04] tracking-wider">
                 <i class="fas fa-home me-1.5"></i> ACCUEIL
             </button>
-            <button onclick="changerOnglet('compteurs')" id="btn-onglet-compteurs" class="bg-[#5c3a1a] hover:bg-[#4a2c11] px-5 py-2 rounded-xl text-xs font-bold transition-all border border-[#4a2c11] tracking-wider">
+            <button onclick="changerOnglet('compteurs')" id="btn-onglet-compteurs" class="bg-[#672409] text-[#fbf6eb] hover:bg-[#521c07] px-5 py-2 rounded-xl text-xs font-bold transition-all border border-[#4a2c11] tracking-wider">
                 <i class="fas fa-beads me-1.5"></i> COMPTEURS
             </button>
-            <button onclick="ouvrirAjouterZikr()" id="btn-admin-ajout" class="hidden bg-amber-800 hover:bg-amber-700 px-5 py-2 rounded-xl text-xs font-bold transition-all border border-amber-600 shadow-md tracking-wider">
+            <button onclick="ouvrirAjouterZikr()" id="btn-admin-ajout" class="hidden bg-[#854d0e] hover:bg-[#672409] text-white px-5 py-2 rounded-xl text-xs font-bold transition-all border border-[#521c07] shadow-md tracking-wider">
                 <i class="fas fa-plus me-1.5"></i> NOUVEAU ZIKR
             </button>
         </div>
     </header>
 
     <section id="section-accueil" class="bg-accueil-pleine-page flex-grow flex items-center justify-center px-4 py-16 w-full">
-        <div class="text-center max-w-2xl w-full mx-auto bg-[#2b1706]/85 p-6 md:p-10 rounded-3xl backdrop-blur-md border border-amber-500/30 shadow-2xl">
-            <h2 class="text-3xl md:text-5xl font-serif font-extrabold text-amber-100 mb-4 tracking-wide drop-shadow-md">
+        <div class="text-center max-w-2xl w-full mx-auto bg-[#4a2c11]/90 p-6 md:p-10 rounded-3xl backdrop-blur-md border border-[#dfd2b9]/30 shadow-2xl">
+            <h2 class="text-3xl md:text-5xl font-serif font-extrabold text-[#fbf6eb] mb-4 tracking-wide drop-shadow-md">
                 GRAND MAGAL DE TOUBA
             </h2>
-            <div class="w-24 h-1 bg-amber-500 mx-auto mb-6"></div>
-            <p class="text-xl md:text-2xl font-black text-[#2b1706] tracking-widest uppercase bg-[#f3ebd9] inline-block px-8 py-3 rounded-xl border-2 border-amber-500/40 shadow-md mb-3">
+            <div class="w-24 h-1 bg-[#b4860b] mx-auto mb-6"></div>
+            <p class="text-xl md:text-2xl font-black text-[#4a2c11] tracking-widest uppercase bg-[#f3ebd9] inline-block px-8 py-3 rounded-xl border-2 border-[#b4860b]/40 shadow-md mb-3">
                 Dimanche 2 Août 2026
             </p>
-            <p class="text-amber-300 font-bold italic text-sm md:text-base mb-8 drop-shadow">Correspondant au 18 Safar 1448 H.</p>
-            <div class="p-6 md:p-8 bg-[#4a2c11]/80 rounded-2xl border border-amber-500/20 text-base md:text-lg text-amber-50 font-semibold italic leading-relaxed shadow-inner">
+            <p class="text-[#dfd2b9] font-bold italic text-sm md:text-base mb-8 drop-shadow">Correspondant au 18 Safar 1448 H.</p>
+            <div class="p-6 md:p-8 bg-[#672409]/80 rounded-2xl border border-[#dfd2b9]/20 text-base md:text-lg text-[#fbf6eb] font-semibold italic leading-relaxed shadow-inner">
                 « Ô mon Seigneur ! Accorde-moi une rétribution telle que chacun de mes écrits puisse guider et éclairer les cœurs pour l'éternité. »
             </div>
-            <button onclick="changerOnglet('compteurs')" class="mt-8 bg-amber-600 text-[#2b1706] hover:bg-amber-500 font-extrabold py-4 px-10 rounded-xl shadow-xl transition-all tracking-widest text-sm border border-amber-400 uppercase">
+            <button onclick="changerOnglet('compteurs')" class="mt-8 bg-[#b4860b] text-[#4a2c11] hover:bg-[#da1] font-extrabold py-4 px-10 rounded-xl shadow-xl transition-all tracking-widest text-sm border border-[#936c04] uppercase">
                 Accéder aux compteurs <i class="fas fa-arrow-right ms-2"></i>
             </button>
         </div>
     </section>
 
     <main id="section-compteurs" class="container mx-auto px-4 py-8 flex-grow max-w-7xl hidden">
-        <div class="mb-8 max-w-xl mx-auto bg-gradient-to-br from-amber-900 to-amber-950 text-center p-5 rounded-2xl border-2 border-amber-500/50 shadow-xl">
-            <h3 class="text-xs md:text-sm font-black text-amber-300 tracking-widest uppercase mb-1">
-                <i class="fas fa-star" style="color: #f59e0b;"></i> TOTAL COLLECTIF SALAT 'ALAN-NABI <i class="fas fa-star" style="color: #f59e0b;"></i>
+        <div class="mb-8 max-w-xl mx-auto bg-gradient-to-br from-[#672409] to-[#4a2c11] text-center p-5 rounded-2xl border-2 border-[#b4860b]/50 shadow-xl">
+            <h3 class="text-xs md:text-sm font-black text-[#dfd2b9] tracking-widest uppercase mb-1">
+                <i class="fas fa-star" style="color: #b4860b;"></i> TOTAL COLLECTIF SALAT 'ALAN-NABI <i class="fas fa-star" style="color: #b4860b;"></i>
             </h3>
-            <p class="text-[11px] text-amber-200/70 font-semibold uppercase tracking-wider mb-2">Somme en direct de toutes les Salats de la communauté</p>
-            <div id="compteur-global-salat" class="text-4xl md:text-5xl font-black text-white tracking-wider drop-shadow-md">0</div>
+            <p class="text-[11px] text-[#fbf6eb]/70 font-semibold uppercase tracking-wider mb-2">Somme en direct de toutes les Salats de la communauté</p>
+            <div id="compteur-global-salat" class="text-4xl md:text-5xl font-black text-[#fbf6eb] tracking-wider drop-shadow-md">0</div>
         </div>
 
         <div id="zikr-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
     </main>
 
-    <footer class="bg-[#2b1706] text-stone-400 text-center py-5 text-xs border-t border-amber-950 font-semibold tracking-widest uppercase z-10">
+    <footer class="bg-[#4a2c11] text-[#dfd2b9] text-center py-5 text-xs border-t border-[#672409] font-semibold tracking-widest uppercase z-10">
         <p>Jëreëjëfaty Bōrom Touba • © Daara Touba Orléans 2026</p>
     </footer>
 
-    <div id="modal-ajout" class="fixed inset-0 bg-[#2b1706]/70 hidden items-center justify-center p-4 z-50 backdrop-blur-sm">
-        <div class="bg-amber-50 rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-amber-500/30">
-            <h3 class="text-lg font-bold text-stone-950 mb-4 border-b border-amber-200 pb-2 flex items-center"><i class="fas fa-beads me-2 text-amber-700"></i> Ajouter un zikr (Admin)</h3>
+    <div id="modal-ajout" class="fixed inset-0 bg-[#4a2c11]/80 hidden items-center justify-center p-4 z-50 backdrop-blur-sm">
+        <div class="bg-[#fbf6eb] rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-[#dfd2b9]">
+            <h3 class="text-lg font-bold text-[#4a2c11] mb-4 border-b border-[#dfd2b9] pb-2 flex items-center"><i class="fas fa-beads me-2 text-[#854d0e]"></i> Ajouter un zikr (Admin)</h3>
             <div class="space-y-4">
                 <div>
-                    <label class="block text-xs font-bold text-stone-700 uppercase tracking-wider mb-1">Nom du Zikr</label>
-                    <input type="text" id="nouveau-nom" class="w-full border border-amber-200 rounded-xl p-3 text-sm focus:border-amber-500 outline-none bg-white">
+                    <label class="block text-xs font-bold text-[#4a2c11] uppercase tracking-wider mb-1">Nom du Zikr</label>
+                    <input type="text" id="nouveau-nom" class="w-full border border-[#dfd2b9] rounded-xl p-3 text-sm focus:border-[#854d0e] outline-none bg-white">
                 </div>
                 <div>
-                    <label class="block text-xs font-bold text-stone-700 uppercase tracking-wider mb-1">Texte / Description</label>
-                    <textarea id="nouveau-texte" class="w-full border border-amber-200 rounded-xl p-3 text-sm focus:border-amber-500 outline-none h-32 custom-scroll bg-white"></textarea>
+                    <label class="block text-xs font-bold text-[#4a2c11] uppercase tracking-wider mb-1">Texte / Description</label>
+                    <textarea id="nouveau-texte" class="w-full border border-[#dfd2b9] rounded-xl p-3 text-sm focus:border-[#854d0e] outline-none h-32 custom-scroll bg-white"></textarea>
                 </div>
                 <div class="flex items-center">
-                    <input type="checkbox" id="nouveau-est-salat" class="w-4 h-4 text-amber-700 border-amber-300 rounded focus:ring-amber-500">
-                    <label for="nouveau-est-salat" class="ms-2 text-xs font-bold text-stone-700 uppercase tracking-wider">Ce zikr est une Salat al-Nabi</label>
+                    <input type="checkbox" id="nouveau-est-salat" class="w-4 h-4 text-[#854d0e] border-[#dfd2b9] rounded focus:ring-[#854d0e]">
+                    <label for="nouveau-est-salat" class="ms-2 text-xs font-bold text-[#4a2c11] uppercase tracking-wider">Ce zikr est une Salat al-Nabi</label>
                 </div>
             </div>
             <div class="flex justify-end space-x-3 mt-6">
-                <button onclick="fermerAjouterZikr()" class="px-4 py-2 text-xs font-bold text-stone-600 hover:text-stone-900 uppercase">Annuler</button>
-                <button onclick="confirmerAjouterZikr()" class="px-5 py-2 bg-amber-800 text-white text-xs font-bold rounded-xl shadow-md uppercase">Confirmer</button>
+                <button onclick="fermerAjouterZikr()" class="px-4 py-2 text-xs font-bold text-[#672409] hover:text-[#4a2c11] uppercase">Annuler</button>
+                <button onclick="confirmerAjouterZikr()" class="px-5 py-2 bg-[#854d0e] text-white text-xs font-bold rounded-xl shadow-md uppercase">Confirmer</button>
             </div>
         </div>
     </div>
@@ -228,14 +227,14 @@
                 secAccueil.classList.remove('hidden');
                 secAccueil.classList.add('flex');
                 secCompteurs.classList.add('hidden');
-                btnAccueil.className = "bg-amber-600 px-5 py-2 rounded-xl text-xs font-bold transition-all border border-amber-500 tracking-wider";
-                btnCompteurs.className = "bg-[#5c3a1a] hover:bg-[#4a2c11] px-5 py-2 rounded-xl text-xs font-bold transition-all border border-[#4a2c11] tracking-wider";
+                btnAccueil.className = "bg-[#b4860b] text-[#4a2c11] px-5 py-2 rounded-xl text-xs font-bold transition-all border border-[#936c04] tracking-wider";
+                btnCompteurs.className = "bg-[#672409] text-[#fbf6eb] hover:bg-[#521c07] px-5 py-2 rounded-xl text-xs font-bold transition-all border border-[#4a2c11] tracking-wider";
             } else {
                 secAccueil.classList.add('hidden');
                 secAccueil.classList.remove('flex');
-                secCompteurs.rmClass = secCompteurs.classList.remove('hidden');
-                btnAccueil.className = "bg-[#5c3a1a] hover:bg-[#4a2c11] px-5 py-2 rounded-xl text-xs font-bold transition-all border border-[#4a2c11] tracking-wider";
-                btnCompteurs.className = "bg-amber-600 px-5 py-2 rounded-xl text-xs font-bold transition-all border border-amber-500 tracking-wider";
+                secCompteurs.classList.remove('hidden');
+                btnAccueil.className = "bg-[#672409] text-[#fbf6eb] hover:bg-[#521c07] px-5 py-2 rounded-xl text-xs font-bold transition-all border border-[#4a2c11] tracking-wider";
+                btnCompteurs.className = "bg-[#b4860b] text-[#4a2c11] px-5 py-2 rounded-xl text-xs font-bold transition-all border border-[#936c04] tracking-wider";
                 calculerTotalSalat();
             }
         }
