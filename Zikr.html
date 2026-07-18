@@ -16,6 +16,7 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
             margin: 0;
             padding: 0;
+            scroll-behavior: smooth;
         }
         .arabic-text {
             font-family: 'Amiri', serif;
@@ -25,11 +26,10 @@
         .zikr-card {
             background-color: #fbf6eb !important;
             border: 2px solid #dfd2b9 !important;
-            box-shadow: 0 4px 20px -2px rgba(139, 92, 26, 0.1);
-            transition: transform 0.2s ease;
+            box-shadow: 0 4px 15px -3px rgba(139, 92, 26, 0.08);
         }
         .bg-accueil-pleine-page {
-            background: linear-gradient(rgba(139, 92, 26, 0.55), rgba(92, 58, 26, 0.75)), url('photo-magal.jpeg') !important;
+            background: linear-gradient(rgba(139, 92, 26, 0.6), rgba(92, 58, 26, 0.8)), url('photo-magal.jpeg') !important;
             background-size: cover !important;
             background-position: center !important;
             background-repeat: no-repeat !important;
@@ -40,39 +40,39 @@
         .custom-scroll::-webkit-scrollbar-thumb { background: #d4c4a8; border-radius: 10px; }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between">
+<body class="min-h-screen flex flex-col justify-between select-none">
 
-    <header class="bg-[#78350f] text-[#fbf6eb] py-8 shadow-2xl text-center px-4 relative border-b-2 border-[#b4860b]/40 z-10">
-        <h1 onclick="activerCodeSecret()" class="text-3xl md:text-4xl font-extrabold tracking-widest text-[#fbf6eb] uppercase cursor-pointer select-none">
+    <header class="bg-[#78350f] text-[#fbf6eb] py-8 shadow-xl text-center px-4 relative border-b-2 border-[#b4860b]/40 z-10">
+        <h1 onclick="activerCodeSecret()" class="text-3xl md:text-4xl font-extrabold tracking-widest text-[#fbf6eb] uppercase cursor-pointer">
             COMPTEUR DE ZIKR
         </h1>
         <p class="text-[#dfd2b9] mt-1.5 text-xs md:text-sm font-bold tracking-widest uppercase">
             Magal Touba à Orléans • Édition 2026
         </p>
         
-        <div class="mt-5 flex justify-center gap-4">
-            <button onclick="changerOnglet('accueil')" id="btn-onglet-accueil" class="bg-[#b4860b] text-[#4a2c11] px-5 py-2 rounded-xl text-xs font-bold transition-all border border-[#936c04] tracking-wider">
+        <div class="mt-6 flex justify-center gap-4">
+            <button onclick="changerOnglet('accueil')" id="btn-onglet-accueil" class="bg-[#b4860b] text-[#4a2c11] px-6 py-2.5 rounded-xl text-xs font-bold transition-all border border-[#936c04] tracking-wider shadow-md">
                 <i class="fas fa-home me-1.5"></i> ACCUEIL
             </button>
-            <button onclick="changerOnglet('compteurs')" id="btn-onglet-compteurs" class="bg-[#92400e] text-[#fbf6eb] hover:bg-[#78350f] px-5 py-2 rounded-xl text-xs font-bold transition-all border border-[#78350f] tracking-wider">
+            <button onclick="changerOnglet('compteurs')" id="btn-onglet-compteurs" class="bg-[#92400e] text-[#fbf6eb] hover:bg-[#78350f] px-6 py-2.5 rounded-xl text-xs font-bold transition-all border border-[#78350f] tracking-wider shadow-md">
                 <i class="fas fa-beads me-1.5"></i> COMPTEURS
             </button>
-            <button onclick="ouvrirAjouterZikr()" id="btn-admin-ajout" class="hidden bg-[#b4860b] hover:bg-[#92400e] text-[#4a2c11] px-5 py-2 rounded-xl text-xs font-bold transition-all border border-[#78350f] shadow-md tracking-wider">
+            <button onclick="ouvrirAjouterZikr()" id="btn-admin-ajout" class="hidden bg-[#b4860b] hover:bg-[#92400e] text-[#4a2c11] px-6 py-2.5 rounded-xl text-xs font-bold transition-all border border-[#78350f] shadow-md tracking-wider">
                 <i class="fas fa-plus me-1.5"></i> NOUVEAU ZIKR
             </button>
         </div>
     </header>
 
-    <section id="section-accueil" class="bg-accueil-pleine-page flex-grow flex items-center justify-center px-4 py-16 w-full">
-        <div class="text-center max-w-2xl w-full mx-auto bg-[#78350f]/90 p-6 md:p-10 rounded-3xl backdrop-blur-md border border-[#dfd2b9]/30 shadow-2xl">
-            <h2 class="text-3xl md:text-5xl font-serif font-extrabold text-[#fbf6eb] mb-4 tracking-wide drop-shadow-md">
+    <section id="section-accueil" class="bg-accueil-pleine-page flex-grow flex items-center justify-center px-4 py-12 w-full">
+        <div class="text-center max-w-2xl w-full mx-auto bg-[#78350f]/90 p-6 md:p-10 rounded-3xl border border-[#dfd2b9]/30 shadow-2xl">
+            <h2 class="text-3xl md:text-5xl font-serif font-extrabold text-[#fbf6eb] mb-4 tracking-wide">
                 GRAND MAGAL DE TOUBA
             </h2>
             <div class="w-24 h-1 bg-[#b4860b] mx-auto mb-6"></div>
             <p class="text-xl md:text-2xl font-black text-[#4a2c11] tracking-widest uppercase bg-[#f3ebd9] inline-block px-8 py-3 rounded-xl border-2 border-[#b4860b]/40 shadow-md mb-3">
                 Dimanche 2 Août 2026
             </p>
-            <p class="text-[#dfd2b9] font-bold italic text-sm md:text-base mb-8 drop-shadow">Correspondant au 18 Safar 1448 H.</p>
+            <p class="text-[#dfd2b9] font-bold italic text-sm md:text-base mb-8">Correspondant au 18 Safar 1448 H.</p>
             <div class="p-6 md:p-8 bg-[#92400e]/80 rounded-2xl border border-[#dfd2b9]/20 text-base md:text-lg text-[#fbf6eb] font-semibold italic leading-relaxed shadow-inner">
                 « Ô mon Seigneur ! Accorde-moi une rétribution telle que chacun de mes écrits puisse guider et éclairer les cœurs pour l'éternité. »
             </div>
@@ -82,16 +82,16 @@
         </div>
     </section>
 
-    <main id="section-compteurs" class="container mx-auto px-4 py-8 flex-grow max-w-7xl hidden">
-        <div class="mb-8 max-w-xl mx-auto bg-[#78350f] text-center p-5 rounded-2xl border-2 border-[#b4860b]/50 shadow-xl">
+    <main id="section-compteurs" class="container mx-auto px-4 py-6 flex-grow max-w-7xl hidden">
+        <div class="mb-6 max-w-xl mx-auto bg-[#78350f] text-center p-5 rounded-2xl border-2 border-[#b4860b]/50 shadow-lg">
             <h3 class="text-xs md:text-sm font-black text-[#dfd2b9] tracking-widest uppercase mb-1">
                 <i class="fas fa-star" style="color: #b4860b;"></i> TOTAL COLLECTIF SALAT 'ALAN-NABI <i class="fas fa-star" style="color: #b4860b;"></i>
             </h3>
             <p class="text-[11px] text-[#fbf6eb]/70 font-semibold uppercase tracking-wider mb-2">Somme en direct de toutes les Salats de la communauté</p>
-            <div id="compteur-global-salat" class="text-4xl md:text-5xl font-black text-[#fbf6eb] tracking-wider drop-shadow-md">0</div>
+            <div id="compteur-global-salat" class="text-4xl md:text-5xl font-black text-[#fbf6eb] tracking-wider">0</div>
         </div>
 
-        <div id="zikr-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+        <div id="zikr-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
     </main>
 
     <footer class="bg-[#78350f] text-[#dfd2b9] text-center py-5 text-xs border-t border-[#92400e] font-semibold tracking-widest uppercase z-10">
@@ -166,21 +166,62 @@
         let clicsTitre = 0;
         let initialisationFaite = false;
 
-        function initialiserStructure() {
+        function injecterCartesUneFois() {
             const container = document.getElementById('zikr-container');
             container.innerHTML = '';
             zikrsParDefaut.forEach(defaut => {
                 localCounts[defaut.id] = 0;
                 const card = document.createElement('div');
                 card.id = `card-${defaut.id}`;
-                card.className = "zikr-card rounded-2xl p-6 flex flex-col justify-between items-center relative overflow-hidden";
+                card.className = "zikr-card rounded-2xl p-6 flex flex-col justify-between items-center relative overflow-hidden animate-fade-in";
+                
+                card.innerHTML = `
+                    <div class="w-full">
+                        <button onclick="supprimerZikr(${defaut.id})" id="btn-del-${defaut.id}" class="hidden absolute top-3.5 right-3.5 text-[#dfd2b9] hover:text-[#92400e] text-xs p-1">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                        <h2 class="text-sm font-extrabold text-[#4a2c11] text-center mb-4 border-b border-[#dfd2b9] pb-2 tracking-wider uppercase">${defaut.nom}</h2>
+                        <div class="bg-[#f3ebd9]/30 p-4 rounded-xl border border-[#dfd2b9]/40 inner-shadow text-stone-700">
+                            ${defaut.texte}
+                        </div>
+                    </div>
+
+                    <div class="my-5 w-full flex flex-col items-center gap-1.5">
+                        <div class="text-center">
+                            <p class="text-[10px] text-[#854d0e] font-bold uppercase tracking-wider">Mon décompte actuel</p>
+                            <span id="local-text-${defaut.id}" class="text-4xl font-black text-[#854d0e] tracking-wider">0</span>
+                        </div>
+                        <div class="text-center bg-[#f3ebd9]/60 px-4 py-1.5 rounded-lg border border-[#dfd2b9]/50 w-3/4">
+                            <p class="text-[9px] text-[#4a2c11]/60 font-bold uppercase tracking-widest">Total collectif</p>
+                            <span id="global-text-${defaut.id}" class="text-base font-extrabold text-[#4a2c11] tracking-wider">0</span>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col gap-3 w-full items-center">
+                        <div class="flex items-center space-x-3 w-full justify-center">
+                            <button onclick="reinitialiserLocal(${defaut.id})" class="w-12 h-12 bg-[#f3ebd9]/80 hover:bg-[#dfd2b9] text-[#4a2c11] rounded-xl flex items-center justify-center font-bold text-sm border border-[#dfd2b9]">
+                                <i class="fas fa-undo-alt"></i>
+                            </button>
+                            <button onclick="incrementerLocal(${defaut.id})" class="flex-grow h-12 bg-[#854d0e] hover:bg-[#92400e] active:scale-[0.97] text-[#fbf6eb] rounded-xl flex items-center justify-center font-extrabold text-base shadow transition-all tracking-widest border-b-4 border-[#521c07]">
+                                + 1
+                            </button>
+                            <button onclick="decrementerLocal(${defaut.id})" class="w-12 h-12 bg-[#f3ebd9]/80 hover:bg-[#dfd2b9] text-[#4a2c11] rounded-xl flex items-center justify-center font-bold text-sm border border-[#dfd2b9]">
+                                -1
+                            </button>
+                        </div>
+
+                        <button id="btn-envoyer-${defaut.id}" onclick="envoyerAuCollectif(${defaut.id})" class="w-full py-2.5 bg-[#b4860b] text-[#4a2c11] text-xs font-black rounded-xl opacity-60 cursor-not-allowed transition-all tracking-wider uppercase border border-[#936c04] flex items-center justify-center gap-1.5">
+                            <i class="fas fa-cloud-upload-alt"></i> Envoyer au total collectif
+                        </button>
+                    </div>
+                `;
                 container.appendChild(card);
             });
             initialisationFaite = true;
         }
 
         db.ref('zikrs').on('value', (snapshot) => {
-            if (!initialisationFaite) initialiserStructure();
+            if (!initialisationFaite) injecterCartesUneFois();
             
             const data = snapshot.val();
             if (!data) {
@@ -199,56 +240,20 @@
                     };
                 });
             }
-            mettreAJourVisuels();
+            mettreAJourChiffresSilencieusement();
         });
 
-        function mettreAJourVisuels() {
+        function mettreAJourChiffresSilencieusement() {
             zikrs.forEach(zikr => {
-                const card = document.getElementById(`card-${zikr.id}`);
-                if (!card) return;
-
-                const MonCompteLocal = localCounts[zikr.id] || 0;
-                
-                card.innerHTML = `
-                    <div class="w-full">
-                        <button onclick="supprimerZikr(${zikr.id})" class="${modeAdminActif ? '' : 'hidden'} absolute top-3.5 right-3.5 text-[#dfd2b9] hover:text-[#92400e] transition-all text-xs p-1">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                        <h2 class="text-sm font-extrabold text-[#4a2c11] text-center mb-4 border-b border-[#dfd2b9] pb-2 tracking-wider uppercase">${zikr.nom}</h2>
-                        <div class="bg-[#f3ebd9]/30 p-4 rounded-xl border border-[#dfd2b9]/40 shadow-inner">
-                            ${zikr.texte}
-                        </div>
-                    </div>
-
-                    <div class="my-5 w-full flex flex-col items-center gap-1.5">
-                        <div class="text-center">
-                            <p class="text-[10px] text-[#854d0e] font-bold uppercase tracking-wider">Mon décompte actuel</p>
-                            <span id="local-text-${zikr.id}" class="text-4xl font-black text-[#854d0e] tracking-wider">${MonCompteLocal}</span>
-                        </div>
-                        <div class="text-center bg-[#f3ebd9]/50 px-4 py-1 rounded-lg border border-[#dfd2b9]/50 w-3/4">
-                            <p class="text-[9px] text-[#4a2c11]/60 font-bold uppercase tracking-widest">Total collectif</p>
-                            <span class="text-base font-extrabold text-[#4a2c11] tracking-wider">${zikr.compteur.toLocaleString()}</span>
-                        </div>
-                    </div>
-
-                    <div class="flex flex-col gap-3 w-full items-center">
-                        <div class="flex items-center space-x-3 w-full justify-center">
-                            <button onclick="reinitialiserLocal(${zikr.id})" class="w-12 h-12 bg-[#f3ebd9]/80 hover:bg-[#dfd2b9] text-[#4a2c11] rounded-xl flex items-center justify-center font-bold text-sm border border-[#dfd2b9]">
-                                <i class="fas fa-undo-alt"></i>
-                            </button>
-                            <button onclick="incrementerLocal(${zikr.id})" class="flex-grow h-12 bg-[#854d0e] hover:bg-[#92400e] active:scale-[0.98] text-[#fbf6eb] rounded-xl flex items-center justify-center font-extrabold text-base shadow-md transition-all tracking-widest border-b-4 border-[#521c07]">
-                                + 1
-                            </button>
-                            <button onclick="decrementerLocal(${zikr.id})" class="w-12 h-12 bg-[#f3ebd9]/80 hover:bg-[#dfd2b9] text-[#4a2c11] rounded-xl flex items-center justify-center font-bold text-sm border border-[#dfd2b9]">
-                                -1
-                            </button>
-                        </div>
-
-                        <button id="btn-envoyer-${zikr.id}" onclick="envoyerAuCollectif(${zikr.id})" class="w-full py-2.5 bg-[#b4860b] text-[#4a2c11] text-xs font-black rounded-xl shadow tracking-wider uppercase border border-[#936c04] flex items-center justify-center gap-1.5 ${MonCompteLocal > 0 ? 'animate-pulse' : 'opacity-60 cursor-not-allowed'}">
-                            <i class="fas fa-cloud-upload-alt"></i> Envoyer au total collectif
-                        </button>
-                    </div>
-                `;
+                const elGlobal = document.getElementById(`global-text-${zikr.id}`);
+                if (elGlobal) {
+                    elGlobal.innerText = zikr.compteur.toLocaleString();
+                }
+                const btnDel = document.getElementById(`btn-del-${zikr.id}`);
+                if (btnDel) {
+                    if (modeAdminActif) btnDel.classList.remove('hidden');
+                    else btnDel.classList.add('hidden');
+                }
             });
             calculerTotalSalat();
         }
@@ -256,30 +261,36 @@
         function incrementerLocal(id) {
             localCounts[id] = (localCounts[id] || 0) + 1;
             document.getElementById(`local-text-${id}`).innerText = localCounts[id];
+            
             let btn = document.getElementById(`btn-envoyer-${id}`);
-            if(btn) { btn.classList.add('animate-pulse'); btn.classList.remove('opacity-60', 'cursor-not-allowed'); }
+            if (btn && localCounts[id] === 1) {
+                btn.classList.add('animate-pulse');
+                btn.classList.remove('opacity-60', 'cursor-not-allowed');
+            }
         }
 
         function decrementerLocal(id) {
             if (localCounts[id] && localCounts[id] > 0) {
                 localCounts[id]--;
                 document.getElementById(`local-text-${id}`).innerText = localCounts[id];
-                if(localCounts[id] === 0) {
+                if (localCounts[id] === 0) {
                     let btn = document.getElementById(`btn-envoyer-${id}`);
-                    if(btn) { btn.classList.remove('animate-pulse'); btn.classList.add('opacity-60', 'cursor-not-allowed'); }
+                    if (btn) {
+                        btn.classList.remove('animate-pulse');
+                        btn.classList.add('opacity-60', 'cursor-not-allowed');
+                    }
                 }
             }
         }
 
         function reinitialiserLocal(id) {
             localCounts[id] = 0;
-            puttingVisuelsUnique(id);
-        }
-
-        function puttingVisuelsUnique(id) {
             document.getElementById(`local-text-${id}`).innerText = 0;
             let btn = document.getElementById(`btn-envoyer-${id}`);
-            if(btn) { btn.classList.remove('animate-pulse'); btn.classList.add('opacity-60', 'cursor-not-allowed'); }
+            if (btn) {
+                btn.classList.remove('animate-pulse');
+                btn.classList.add('opacity-60', 'cursor-not-allowed');
+            }
         }
 
         function envoyerAuCollectif(id) {
@@ -292,8 +303,7 @@
                     return (valeurActuelle || 0) + aEnvoyer;
                 }, (error, committed) => {
                     if (committed) {
-                        localCounts[id] = 0;
-                        puttingVisuelsUnique(id);
+                        reinitialiserLocal(id);
                     }
                 });
             }
@@ -304,7 +314,7 @@
             if (clicsTitre === 3) {
                 modeAdminActif = true;
                 document.getElementById('btn-admin-ajout').classList.remove('hidden');
-                mettreAJourVisuels();
+                mettreAJourChiffresSilencieusement();
                 alert("🔒 Mode Admin activé !");
                 clicsTitre = 0;
             }
@@ -328,14 +338,14 @@
                 secAccueil.classList.remove('hidden');
                 secAccueil.classList.add('flex');
                 secCompteurs.classList.add('hidden');
-                btnAccueil.className = "bg-[#b4860b] text-[#4a2c11] px-5 py-2 rounded-xl text-xs font-bold transition-all border border-[#936c04] tracking-wider";
-                btnCompteurs.className = "bg-[#92400e] text-[#fbf6eb] hover:bg-[#78350f] px-5 py-2 rounded-xl text-xs font-bold transition-all border border-[#78350f] tracking-wider";
+                btnAccueil.className = "bg-[#b4860b] text-[#4a2c11] px-6 py-2.5 rounded-xl text-xs font-bold transition-all border border-[#936c04] tracking-wider shadow-md";
+                btnCompteurs.className = "bg-[#92400e] text-[#fbf6eb] hover:bg-[#78350f] px-6 py-2.5 rounded-xl text-xs font-bold transition-all border border-[#78350f] tracking-wider shadow-md";
             } else {
                 secAccueil.classList.add('hidden');
                 secAccueil.classList.remove('flex');
                 secCompteurs.classList.remove('hidden');
-                btnAccueil.className = "bg-[#92400e] text-[#fbf6eb] hover:bg-[#78350f] px-5 py-2 rounded-xl text-xs font-bold transition-all border border-[#78350f] tracking-wider";
-                btnCompteurs.className = "bg-[#b4860b] text-[#4a2c11] px-5 py-2 rounded-xl text-xs font-bold transition-all border border-[#936c04] tracking-wider";
+                btnAccueil.className = "bg-[#92400e] text-[#fbf6eb] hover:bg-[#78350f] px-6 py-2.5 rounded-xl text-xs font-bold transition-all border border-[#78350f] tracking-wider shadow-md";
+                btnCompteurs.className = "bg-[#b4860b] text-[#4a2c11] px-6 py-2.5 rounded-xl text-xs font-bold transition-all border border-[#936c04] tracking-wider shadow-md";
                 calculerTotalSalat();
             }
         }
