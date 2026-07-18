@@ -10,39 +10,47 @@
     
     <style>
         body {
-            background-color: #fdfbf7;
+            background-color: #f7f3eb;
             font-family: 'Plus Jakarta Sans', sans-serif;
         }
         .arabic-text {
             font-family: 'Amiri', serif;
             line-height: 2;
         }
+        /* Cartes de zikr avec fond beige/crème ambré chaleureux sans blanc */
         .zikr-card {
-            background: #ffffff;
-            border: 1px solid #e6ded2;
-            box-shadow: 0 4px 20px -2px rgba(139, 92, 26, 0.05);
+            background: #fbf8f3;
+            border: 2px solid #e0d5c1;
+            box-shadow: 0 4px 20px -2px rgba(139, 92, 26, 0.08);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .zikr-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 20px 35px -10px rgba(184, 134, 11, 0.15);
-            border-color: #d4af37;
+            box-shadow: 0 20px 35px -10px rgba(184, 134, 11, 0.2);
+            border-color: #b45309;
+        }
+        /* Section accueil avec photo couvrant tout le fond */
+        .bg-accueil-pleine-page {
+            background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.8)), url('photo-magal.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
         .custom-scroll::-webkit-scrollbar {
             width: 5px;
         }
         .custom-scroll::-webkit-scrollbar-track {
-            background: #fdfbf7;
+            background: #fbf8f3;
         }
         .custom-scroll::-webkit-scrollbar-thumb {
-            background: #e2d7c7;
+            background: #d4c5b0;
             border-radius: 10px;
         }
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between">
 
-    <header class="bg-gradient-to-b from-stone-950 to-stone-900 text-white py-8 shadow-2xl text-center px-4 relative border-b-2 border-amber-500/40">
+    <header class="bg-gradient-to-b from-stone-950 to-stone-900 text-white py-8 shadow-2xl text-center px-4 relative border-b-2 border-amber-500/40 z-10">
         <h1 onclick="activerCodeSecret()" class="text-3xl md:text-4xl font-extrabold tracking-widest text-amber-100 uppercase cursor-pointer select-none">
             COMPTEUR DE ZIKR
         </h1>
@@ -63,28 +71,23 @@
         </div>
     </header>
 
-    <section id="section-accueil" class="container mx-auto px-4 py-8 max-w-4xl flex-grow">
-        <div class="bg-white rounded-3xl border border-amber-500/20 shadow-xl overflow-hidden p-6 md:p-10 text-center border-t-4 border-t-amber-700">
-            
-            <div class="w-full max-w-2xl mx-auto rounded-2xl overflow-hidden border border-amber-500/30 shadow-lg mb-8 bg-stone-100">
-                <img src="photo-magal.jpeg" alt="Cheikh Ahmadou Bamba" class="w-full h-auto max-h-[500px] object-cover block mx-auto">
-            </div>
-            
-            <h2 class="text-3xl md:text-5xl font-serif font-extrabold text-stone-900 mb-4 tracking-wide">
+    <section id="section-accueil" class="bg-accueil-pleine-page flex-grow flex items-center justify-center px-4 py-12 min-h-[calc(100vh-220px)]">
+        <div class="text-center max-w-2xl mx-auto bg-stone-950/40 p-8 rounded-3xl backdrop-blur-sm border border-amber-500/20 shadow-2xl">
+            <h2 class="text-3xl md:text-5xl font-serif font-extrabold text-amber-100 mb-4 tracking-wide drop-shadow-md">
                 GRAND MAGAL DE TOUBA
             </h2>
-            <div class="w-24 h-1 bg-amber-600 mx-auto mb-6"></div>
+            <div class="w-24 h-1 bg-amber-500 mx-auto mb-6"></div>
             
-            <p class="text-xl md:text-2xl font-black text-emerald-800 tracking-widest uppercase bg-emerald-50 inline-block px-8 py-3 rounded-xl border-2 border-emerald-600/20 shadow-sm mb-3">
+            <p class="text-xl md:text-2xl font-black text-white tracking-widest uppercase bg-emerald-700/80 inline-block px-8 py-3 rounded-xl border-2 border-emerald-500/40 shadow-md mb-3">
                 Dimanche 2 Août 2026
             </p>
-            <p class="text-stone-500 font-bold italic text-sm md:text-base mb-8">Correspondant au 18 Safar 1448 H.</p>
+            <p class="text-amber-300 font-bold italic text-sm md:text-base mb-8 drop-shadow">Correspondant au 18 Safar 1448 H.</p>
             
-            <div class="p-6 md:p-8 bg-amber-50/60 rounded-2xl border border-amber-500/20 text-base md:text-xl text-stone-900 font-semibold max-w-2xl mx-auto italic leading-relaxed shadow-inner">
+            <div class="p-6 md:p-8 bg-amber-950/60 rounded-2xl border border-amber-500/30 text-base md:text-lg text-amber-50 font-semibold italic leading-relaxed shadow-inner">
                 « Ô mon Seigneur ! Accorde-moi une rétribution telle que chacun de mes écrits puisse guider et éclairer les cœurs pour l'éternité. »
             </div>
             
-            <button onclick="changerOnglet('compteurs')" class="mt-8 bg-stone-900 text-amber-100 hover:bg-stone-800 font-bold py-4 px-10 rounded-xl shadow-lg transition-all tracking-widest text-sm border border-stone-700 uppercase">
+            <button onclick="changerOnglet('compteurs')" class="mt-8 bg-amber-600 text-stone-950 hover:bg-amber-500 font-extrabold py-4 px-10 rounded-xl shadow-xl transition-all tracking-widest text-sm border border-amber-400 uppercase">
                 Accéder aux compteurs <i class="fas fa-arrow-right ms-2"></i>
             </button>
         </div>
@@ -95,7 +98,7 @@
             </div>
     </main>
 
-    <footer class="bg-stone-950 text-stone-400 text-center py-5 text-xs border-t border-stone-800 font-semibold tracking-widest uppercase">
+    <footer class="bg-stone-950 text-stone-400 text-center py-5 text-xs border-t border-stone-800 font-semibold tracking-widest uppercase z-10">
         <p>Jëreëjëfaty Bōrom Touba • © Daara Touba Orléans 2026</p>
     </footer>
 
@@ -122,39 +125,40 @@
     </div>
 
     <script>
-        // Force le vidage de la mémoire pour appliquer instantanément les nouvelles couleurs
-        if (!localStorage.getItem('nettoyage_couleurs_v101')) {
+        // Force la mise à jour complète pour les nouvelles couleurs et le fond marron beige
+        if (!localStorage.getItem('nettoyage_couleurs_chaleureuses_v103')) {
             localStorage.clear();
-            localStorage.setItem('nettoyage_couleurs_v101', 'true');
+            localStorage.setItem('nettoyage_couleurs_chaleureuses_v103', 'true');
         }
 
         const zikrsParDefaut = [
-            { id: 1, nom: "Astaghfiroullahal 'Azim", texte: "<span class='arabic-text text-3xl font-bold text-emerald-800 block text-center' dir='rtl'>أَسْتَغْفِرُ اللَّهَ الْعَظِيمَ</span><hr class='my-2.5 border-stone-100'><p class='text-xs text-stone-500 text-center italic font-semibold'>(« Je demande pardon à Allah l'Immense »)</p>", compteur: 0 },
-            { id: 2, nom: "Alhamdoulillah", texte: "<span class='arabic-text text-3xl font-bold text-emerald-800 block text-center' dir='rtl'>الْحَمْدُ لِلَّهِ</span><hr class='my-2.5 border-stone-100'><p class='text-xs text-stone-500 text-center italic font-semibold'>(« Louange à Allah »)</p>", compteur: 0 },
+            { id: 1, nom: "Soubhanallah", texte: "<span class='arabic-text text-3xl font-bold text-emerald-800 block text-center' dir='rtl'>سُبْحَانَ اللَّهِ</span><hr class='my-2.5 border-amber-200'><p class='text-xs text-amber-900 text-center italic font-bold'>(« Gloire à Allah »)</p>", compteur: 0 },
+            { id: 2, nom: "Soubhanallahi wa bihamdihi", texte: "<span class='arabic-text text-3xl font-bold text-emerald-800 block text-center' dir='rtl'>سُبْحَانَ اللَّهِ وَبِحَمْدِهِ</span><hr class='my-2.5 border-amber-200'><p class='text-xs text-amber-900 text-center italic font-bold'>(« Gloire et louange à Allah »)</p>", compteur: 0 },
             { id: 3, nom: "La ilaha illa Allahu al-maliku al-haqqu al-mubin", texte: "<span class='arabic-text text-2xl font-bold text-emerald-800 block text-center' dir='rtl'>لَا إِلَٰهَ إِلَّا اللَّهُ الْمَلِكُ الْحَقُّ الْمُبِينُ</span>", compteur: 0 },
-            { id: 4, nom: "Soubhanallahi wa bihamdihi", texte: "<span class='arabic-text text-3xl font-bold text-emerald-800 block text-center' dir='rtl'>سُبْحَانَ اللَّهِ وَبِحَمْدِهِ</span><hr class='my-2.5 border-stone-100'><p class='text-xs text-stone-500 text-center italic font-semibold'>(« Gloire et louange à Allah »)</p>", compteur: 0 },
+            { id: 4, nom: "Alhamdoulillah", texte: "<span class='arabic-text text-3xl font-bold text-emerald-800 block text-center' dir='rtl'>الْحَمْدُ لِلَّهِ</span><hr class='my-2.5 border-amber-200'><p class='text-xs text-amber-900 text-center italic font-bold'>(« Louange à Allah »)</p>", compteur: 0 },
             { id: 5, nom: "Çallal lahou ala Mouhammad", texte: "<span class='arabic-text text-3xl font-bold text-emerald-800 block text-center' dir='rtl'>صَلَّى اللَّهُ عَلَىٰ مُحَمَّدٍ</span>", compteur: 0 },
+            { id: 6, nom: "Astaghfiroullahal 'Azim", texte: "<span class='arabic-text text-3xl font-bold text-emerald-800 block text-center' dir='rtl'>أَسْتَغْفِرُ اللَّهَ الْعَظِيمَ</span><hr class='my-2.5 border-amber-200'><p class='text-xs text-amber-900 text-center italic font-bold'>(« Je demande pardon à Allah l'Immense »)</p>", compteur: 0 },
             {
-                id: 6,
+                id: 7,
                 nom: "Salat de Khadimou Rassoul",
-                texte: "<div class='custom-scroll max-h-60 overflow-y-auto px-1'><span class='arabic-text text-xl font-bold text-emerald-800 block text-center mb-3 leading-relaxed' dir='rtl'>بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ<br>اللَّهُمَّ بِحَقِّ وَجْهِكَ الْكَرِيمِ صَلِّ وَسَلِّمْ وَبَارِكْ عَلَىٰ سَيِّدِنَا وَمَوْلَانَا مُحَمَّدٍ وَعَلَىٰ آلِهِ وَصَحْبِهِ وَهَبْ لِشَيْخِنَا أَحْمَدَ ابْنِ مُحَمَّدٍ ابْنِ حَبِيبِ اللَّهِ مَا نَوَاهُ لِنَفْسِهِ وَلِأُمَّةِ رَسُولِ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ وَبَارِكْ مَا نَوَاهُ الشَّيْخُ أَحْمَدُ ابْنِ مُحَمَّدٍ اللَّهُمَّ يَا مُجِيبَ يَا رَبَّ الْعَالَمِينَ إِنَّكَ أَنْتَ الْوَهَّابُ ...<br>سُبْحَانَ رَبِّكَ رَبِّ الْعِزَّةِ عَمَّا يَصِفُونَ وَسَلَامٌ عَلَى الْمُرْسَلِينَ وَالْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ</span><hr class='my-2.5 border-stone-100'><p class='text-[11px] text-stone-600 text-left italic leading-relaxed font-medium font-sans'>Bismillahir Rahmanir Rahim. Allahumma bihaqqi wajhikal karīmi salli wa sallim wa bārik alā sayyidinā wa mawlānā Muhammadin wa alā ālihī wa sahbihī wa hab lishaykhinā Ahmada-bni Muhammadin-ibni Habībillāhi mā nawāhu linafsihī wa li-ummati Rasūlillāhi sallallāhu alayhi wa sallama wa bārik mā nawāhush-shaykhu Ahmadu-bnu Muhammadin. Allahumma yā Mujību yā Rabbal ālamīna innaka Antal Wahhāb. Subhāna Rabbika Rabbil izzati ammā yasifūna wa salāmun alal mursalīna walhamdu lillāhi Rabbil ālamīn.</p></div>",
+                texte: "<div class='custom-scroll max-h-60 overflow-y-auto px-1'><span class='arabic-text text-xl font-bold text-emerald-800 block text-center mb-3 leading-relaxed' dir='rtl'>بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ<br>اللَّهُمَّ بِحَقِّ وَجْهِكَ الْكَرِيمِ صَلِّ وَسَلِّمْ وَبَارِكْ عَلَىٰ سَيِّدِنَا وَمَوْلَانَا مُحَمَّدٍ وَعَلَىٰ آلِهِ وَصَحْبِهِ وَهَبْ لِشَيْخِنَا أَحْمَدَ ابْنِ مُحَمَّدٍ ابْنِ حَبِيبِ اللَّهِ مَا نَوَاهُ لِنَفْسِهِ وَلِأُمَّةِ رَسُولِ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ وَبَارِكْ مَا نَوَاهُ الشَّيْخُ أَحْمَدُ ابْنِ مُحَمَّدٍ اللَّهُمَّ يَا مُجِيبَ يَا رَبَّ الْعَالَمِينَ إِنَّكَ أَنْتَ الْوَهَّاب...<br>سُبْحَانَ رَبِّكَ رَبِّ الْعِزَّةِ عَمَّا يَصِفُونَ وَسَلَامٌ عَلَى الْمُرْسَلِينَ وَالْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ</span><hr class='my-2.5 border-amber-200'><p class='text-[11px] text-amber-950 text-left italic leading-relaxed font-bold font-sans bg-amber-100/50 p-2 rounded-lg border border-amber-200/60'>Bismillahir Rahmanir Rahim. Allahumma bihaqqi wajhikal karīmi salli wa sallim wa bārik alā sayyidinā wa mawlānā Muhammadin wa alā ālihī wa sahbihī wa hab lishaykhinā Ahmada-bni Muhammadin-ibni Habībillāhi mā nawāhu linafsihī wa li-ummati Rasūlillāhi sallallāhu alayhi wa sallama wa bārik mā nawāhush-shaykhu Ahmadu-bnu Muhammadin. Allahumma yā Mujību yā Rabbal ālamīna innaka Antal Wahhāb. Subhāna Rabbika Rabbil izzati ammā yasifūna wa salāmun alal mursalīna walhamdu lillāhi Rabbil ālamīn.</p></div>",
                 compteur: 0
             },
             { 
-                id: 7, 
+                id: 8, 
                 nom: "Salatoul Fatiha", 
-                texte: "<div class='custom-scroll max-h-52 overflow-y-auto px-1'><span class='arabic-text text-2xl font-bold text-emerald-800 block text-center mb-3 leading-relaxed' dir='rtl'>بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ<br>اللَّهُمَّ صَلِّ عَلَىٰ سَيِّدِنَا مُحَمَّدٍ الْفَاتِحِ لِمَا أُغْلِقَ وَالْخَاتِمِ لِمَا سَبَقَ نَاصِرِ الْحَقِّ بِالْحَقِّ وَالْهَادِي إِلَىٰ صِرَاطِكَ الْمُسْتَقِيمِ وَعَلَىٰ آلِهِ حَقَّ قَدْرِهِ وَمِقْدَارِهِ الْعَظِيمِ</span><hr class='my-2.5 border-stone-100'><p class='text-[11px] text-stone-600 text-left italic leading-relaxed font-medium font-sans'>Bismillahirahmanirahim. Allahumma salli ala sayyidina Muhammadin al fatihi lima ughliq wal khatimi lima sabaq nasil haq bil haq wal hadi ila shiratikal mustaqim wa ala alihi haq qadri wa miqdarihi azim.</p></div>", 
+                texte: "<div class='custom-scroll max-h-52 overflow-y-auto px-1'><span class='arabic-text text-2xl font-bold text-emerald-800 block text-center mb-3 leading-relaxed' dir='rtl'>بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ<br>اللَّهُمَّ صَلِّ عَلَىٰ سَيِّدِنَا مُحَمَّدٍ الْفَاتِحِ لِمَا أُغْلِقَ وَالْخَاتِمِ لِمَا سَبَقَ نَاصِرِ الْحَقِّ بِالْحَقِّ وَالْهَادِي إِلَىٰ صِرَاطِكَ الْمُسْتَقِيمِ وَعَلَىٰ آلِهِ حَقَّ قَدْرِهِ وَمِقْدَارِهِ الْعَظِيمِ</span><hr class='my-2.5 border-amber-200'><p class='text-[11px] text-amber-950 text-left italic leading-relaxed font-bold font-sans bg-amber-100/50 p-2 rounded-lg border border-amber-200/60'>Bismillahirahmanirahim. Allahumma salli ala sayyidina Muhammadin al fatihi lima ughliq wal khatimi lima sabaq nasil haq bil haq wal hadi ila shiratikal mustaqim wa ala alihi haq qadri wa miqdarihi azim.</p></div>", 
                 compteur: 0 
             },
             { 
-                id: 8, 
+                id: 9, 
                 nom: "Salatoul Oumiyi", 
-                texte: "<span class='arabic-text text-2xl font-bold text-emerald-800 block text-center mb-3 leading-relaxed' dir='rtl'>اللَّهُمَّ صَلِّ عَلَىٰ سَيِّدِنَا مُحَمَّدٍ النَّبِيِّ الْأُمِّيِّ وَعَلَىٰ آلِهِ وَصَحْبِهِ وَسَلِّمْ تَسْلِيمًا</span><hr class='my-2.5 border-stone-100'><p class='text-xs text-stone-600 text-left italic font-medium font-sans'>Allahumma salli ala sayyidina Muhammad nabi ummi wa ala alihi wa sahbihi wa sallim taslima.</p>", 
+                texte: "<span class='arabic-text text-2xl font-bold text-emerald-800 block text-center mb-3 leading-relaxed' dir='rtl'>اللَّهُمَّ صَلِّ عَلَىٰ سَيِّدِنَا مُحَمَّدٍ النَّبِيِّ الْأُمِّيِّ وَعَلَىٰ آلِهِ وَصَحْبِهِ وَسَلِّمْ تَسْلِيمًا</span><hr class='my-2.5 border-amber-200'><p class='text-xs text-amber-950 text-left italic font-bold font-sans bg-amber-100/50 p-2 rounded-lg border border-amber-200/60'>Allahumma salli ala sayyidina Muhammad nabi ummi wa ala alihi wa sahbihi wa sallim taslima.</p>", 
                 compteur: 0 
             }
         ];
 
-        const STORAGE_KEY = 'zikrs_production_color_v101';
+        const STORAGE_KEY = 'zikrs_production_warm_v103';
         let zikrs = JSON.parse(localStorage.getItem(STORAGE_KEY));
         let modeAdminActif = false;
         let clicsTitre = 0;
@@ -209,25 +213,25 @@
                 card.className = "zikr-card rounded-2xl p-6 flex flex-col justify-between items-center relative overflow-hidden";
                 card.innerHTML = `
                     <div class="w-full">
-                        <button onclick="supprimerZikr(${zikr.id})" class="${modeAdminActif ? '' : 'hidden'} absolute top-3.5 right-3.5 text-stone-300 hover:text-red-600 transition-all text-xs p-1">
+                        <button onclick="supprimerZikr(${zikr.id})" class="${modeAdminActif ? '' : 'hidden'} absolute top-3.5 right-3.5 text-stone-400 hover:text-red-600 transition-all text-xs p-1">
                             <i class="fas fa-trash"></i>
                         </button>
-                        <h2 class="text-sm font-extrabold text-stone-900 text-center mb-4 border-b border-stone-100 pb-2 tracking-wider uppercase">${zikr.nom}</h2>
-                        <div class="bg-stone-50/70 p-4 rounded-xl border border-stone-100 shadow-inner">
+                        <h2 class="text-sm font-extrabold text-amber-950 text-center mb-4 border-b border-amber-200/70 pb-2 tracking-wider uppercase">${zikr.nom}</h2>
+                        <div class="bg-amber-50/40 p-4 rounded-xl border border-amber-200/30 shadow-inner">
                             ${zikr.texte}
                         </div>
                     </div>
                     <div class="my-6 w-full text-center">
-                        <span class="text-5xl font-black text-stone-900 tracking-wider">${zikr.compteur.toLocaleString()}</span>
+                        <span class="text-5xl font-black text-amber-950 tracking-wider">${zikr.compteur.toLocaleString()}</span>
                     </div>
                     <div class="flex items-center space-x-3 w-full justify-center">
-                        <button onclick="reinitialiserCompteur(${zikr.id})" class="w-12 h-12 bg-stone-100 hover:bg-stone-200 text-stone-700 rounded-xl flex items-center justify-center font-bold text-sm shadow-sm transition-all border border-stone-200" title="Remettre à 0 uniquement ce compteur">
+                        <button onclick="reinitialiserCompteur(${zikr.id})" class="w-12 h-12 bg-amber-100/60 hover:bg-amber-200/80 text-amber-900 rounded-xl flex items-center justify-center font-bold text-sm shadow-sm transition-all border border-amber-200" title="Remettre à 0 uniquement ce compteur">
                             <i class="fas fa-undo-alt"></i>
                         </button>
                         <button onclick="incrementer(${zikr.id})" class="flex-grow h-12 bg-emerald-700 hover:bg-emerald-600 active:scale-[0.98] text-white rounded-xl flex items-center justify-center font-extrabold text-base shadow-md transition-all tracking-widest border-b-4 border-emerald-900">
                             + 1
                         </button>
-                        <button onclick="decrementer(${zikr.id})" class="w-12 h-12 bg-stone-100 hover:bg-red-50 text-stone-600 hover:text-red-600 rounded-xl flex items-center justify-center font-bold text-sm shadow-sm transition-all border border-stone-200" title="Retirer 1">
+                        <button onclick="decrementer(${zikr.id})" class="w-12 h-12 bg-amber-100/60 hover:bg-red-50 text-amber-800 hover:text-red-600 rounded-xl flex items-center justify-center font-bold text-sm shadow-sm transition-all border border-amber-200" title="Retirer 1">
                             -1
                         </button>
                     </div>
