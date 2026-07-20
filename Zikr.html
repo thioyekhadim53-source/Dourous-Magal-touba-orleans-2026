@@ -42,7 +42,7 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between select-none">
 
-    <header class="bg-[#78350f] text-[#fbf6eb] py-8 shadow-xl text-center px-4 relative border-b-2 border-[#b4860b]/40 z-10">
+    <header class="bg-[#78350f] text-[#fbf6eb] py-8 shadow-xl text-center px-4 relative border-b-2 border-[#dfd2b9]/40 z-10">
         <h1 onclick="activerCodeSecret()" class="text-3xl md:text-4xl font-extrabold tracking-widest text-[#fbf6eb] uppercase cursor-pointer">
             COMPTEUR DE ZIKR
         </h1>
@@ -51,13 +51,13 @@
         </p>
         
         <div class="mt-6 flex justify-center gap-4">
-            <button onclick="changerOnglet('accueil')" id="btn-onglet-accueil" class="bg-[#b4860b] text-[#4a2c11] px-6 py-2.5 rounded-xl text-xs font-bold transition-all border border-[#936c04] tracking-wider shadow-md">
+            <button onclick="changerOnglet('accueil')" id="btn-onglet-accueil" class="bg-[#dfd2b9] text-[#4a2c11] px-6 py-2.5 rounded-xl text-xs font-bold transition-all border border-[#d4c4a8] tracking-wider shadow-md">
                 <i class="fas fa-home me-1.5"></i> ACCUEIL
             </button>
             <button onclick="changerOnglet('compteurs')" id="btn-onglet-compteurs" class="bg-[#92400e] text-[#fbf6eb] hover:bg-[#78350f] px-6 py-2.5 rounded-xl text-xs font-bold transition-all border border-[#78350f] tracking-wider shadow-md">
                 <i class="fas fa-beads me-1.5"></i> COMPTEURS
             </button>
-            <button onclick="ouvrirAjouterZikr()" id="btn-admin-ajout" class="hidden bg-[#b4860b] hover:bg-[#92400e] text-[#4a2c11] px-6 py-2.5 rounded-xl text-xs font-bold transition-all border border-[#78350f] shadow-md tracking-wider">
+            <button onclick="ouvrirAjouterZikr()" id="btn-admin-ajout" class="hidden bg-[#dfd2b9] hover:bg-[#92400e] text-[#4a2c11] px-6 py-2.5 rounded-xl text-xs font-bold transition-all border border-[#78350f] shadow-md tracking-wider">
                 <i class="fas fa-plus me-1.5"></i> NOUVEAU ZIKR
             </button>
         </div>
@@ -68,26 +68,26 @@
             <h2 class="text-3xl md:text-5xl font-serif font-extrabold text-[#fbf6eb] mb-4 tracking-wide">
                 GRAND MAGAL DE TOUBA
             </h2>
-            <div class="w-24 h-1 bg-[#b4860b] mx-auto mb-6"></div>
-            <p class="text-xl md:text-2xl font-black text-[#4a2c11] tracking-widest uppercase bg-[#f3ebd9] inline-block px-8 py-3 rounded-xl border-2 border-[#b4860b]/40 shadow-md mb-3">
+            <div class="w-24 h-1 bg-[#dfd2b9] mx-auto mb-6"></div>
+            <p class="text-xl md:text-2xl font-black text-[#4a2c11] tracking-widest uppercase bg-[#f3ebd9] inline-block px-8 py-3 rounded-xl border-2 border-[#dfd2b9]/40 shadow-md mb-3">
                 Dimanche 2 Août 2026
             </p>
             <p class="text-[#dfd2b9] font-bold italic text-sm md:text-base mb-8">Correspondant au 18 Safar 1448 H.</p>
             <div class="p-6 md:p-8 bg-[#92400e]/80 rounded-2xl border border-[#dfd2b9]/20 text-base md:text-lg text-[#fbf6eb] font-semibold italic leading-relaxed shadow-inner">
                 « Ô mon Seigneur ! Accorde-moi une rétribution telle que chacun de mes écrits puisse guider et éclairer les cœurs pour l'éternité. »
             </div>
-            <button onclick="changerOnglet('compteurs')" class="mt-8 bg-[#b4860b] text-[#4a2c11] hover:bg-[#dfa613] font-extrabold py-4 px-10 rounded-xl shadow-xl transition-all tracking-widest text-sm border border-[#936c04] uppercase">
+            <button onclick="changerOnglet('compteurs')" class="mt-8 bg-[#dfd2b9] text-[#4a2c11] hover:bg-[#fbf6eb] font-extrabold py-4 px-10 rounded-xl shadow-xl transition-all tracking-widest text-sm border border-[#d4c4a8] uppercase">
                 Accéder aux compteurs <i class="fas fa-arrow-right ms-2"></i>
             </button>
         </div>
     </section>
 
     <main id="section-compteurs" class="container mx-auto px-4 py-6 flex-grow max-w-7xl hidden">
-        <div class="mb-6 max-w-xl mx-auto bg-[#78350f] text-center p-5 rounded-2xl border-2 border-[#b4860b]/50 shadow-lg">
+        <div class="mb-6 max-w-xl mx-auto bg-[#78350f] text-center p-5 rounded-2xl border-2 border-[#dfd2b9]/50 shadow-lg">
             <h3 class="text-xs md:text-sm font-black text-[#dfd2b9] tracking-widest uppercase mb-1">
-                <i class="fas fa-star" style="color: #b4860b;"></i> TOTAL COLLECTIF SALAT 'ALAN-NABI <i class="fas fa-star" style="color: #b4860b;"></i>
+                <i class="fas fa-star text-[#dfd2b9]"></i> TOTAL COLLECTIF SALAT 'ALAN-NABI <i class="fas fa-star text-[#dfd2b9]"></i>
             </h3>
-            <p class="text-[11px] text-[#fbf6eb]/70 font-semibold uppercase tracking-wider mb-2">Somme en direct de toutes les Salats de la communauté</p>
+            <p class="text-[11px] text-[#fbf6eb]/70 font-semibold uppercase tracking-wider mb-2">Somme globale en direct de toutes les Salats récitées</p>
             <div id="compteur-global-salat" class="text-4xl md:text-5xl font-black text-[#fbf6eb] tracking-wider">0</div>
         </div>
 
@@ -130,32 +130,36 @@
         firebase.initializeApp(firebaseConfig);
         const db = firebase.database();
 
+        // Base de données réorganisée selon tes critères précis
         const zikrsParDefaut = [
-            { id: 1, nom: "Soubhanallah", estSalat: false, texte: "<span class='arabic-text text-3xl font-bold block text-center' dir='rtl'>سُبْحَانَ اللَّهِ</span><hr class='my-2.5 border-[#dfd2b9]'><p class='text-xs text-[#4a2c11] text-center italic font-bold'>(« Gloire à Allah »)</p>", compteur: 0 },
-            { id: 2, nom: "Soubhanallahi wa bihamdihi", estSalat: false, texte: "<span class='arabic-text text-3xl font-bold block text-center' dir='rtl'>سُبْحَانَ اللَّهِ وَبِحَمْدِهِ</span><hr class='my-2.5 border-[#dfd2b9]'><p class='text-xs text-[#4a2c11] text-center italic font-bold'>(« Gloire et louange à Allah »)</p>", compteur: 0 },
-            { id: 3, nom: "La ilaha illa Allahu al-maliku al-haqqu al-mubin", estSalat: false, texte: "<span class='arabic-text text-2xl font-bold block text-center' dir='rtl'>لَا إِلَٰهَ إِلَّا اللَّهُ الْمَلِكُ الْحَقُّ الْمُبِينُ</span><hr class='my-2.5 border-[#dfd2b9]'><p class='text-xs text-[#4a2c11] text-center italic font-bold'>(« Il n'y a de divinité d'autre qu'Allah, le Roi, la Vérité Éclatante »)</p>", compteur: 0 },
-            { id: 4, nom: "Alhamdoulillah", estSalat: false, texte: "<span class='arabic-text text-3xl font-bold block text-center' dir='rtl'>الْحَمْدُ لِلَّهِ</span><hr class='my-2.5 border-[#dfd2b9]'><p class='text-xs text-[#4a2c11] text-center italic font-bold'>(« Louange à Allah »)</p>", compteur: 0 },
-            { id: 5, nom: "Çallal lahou ala Mouhammad", estSalat: true, texte: "<span class='arabic-text text-3xl font-bold block text-center' dir='rtl'>صَلَّى اللَّهُ عَلَىٰ مُحَمَّدٍ</span><hr class='my-2.5 border-[#dfd2b9]'><p class='text-xs text-[#4a2c11] text-center italic font-bold'>(« Que la paix et les bénédictions d'Allah soient sur Muhammad »)</p>", compteur: 0 },
-            { id: 6, nom: "Astaghfiroullahal 'Azim", estSalat: false, texte: "<span class='arabic-text text-3xl font-bold block text-center' dir='rtl'>أَسْتَغْفِرُ اللَّهَ الْعَظِيمَ</span><hr class='my-2.5 border-[#dfd2b9]'><p class='text-xs text-[#4a2c11] text-center italic font-bold'>(« Je demande pardon à Allah l'Immense »)</p>", compteur: 0 },
+            { id: 1, nom: "Astaghfiroullahal 'Azim", estSalat: false, texte: "<span class='arabic-text text-3xl font-bold block text-center' dir='rtl'>أَسْتَغْفِرُ اللَّهَ الْعَظِيمَ</span><hr class='my-2.5 border-[#dfd2b9]'><p class='text-xs text-[#4a2c11] text-center font-bold font-sans bg-[#f3ebd9]/40 p-2 rounded-lg'>Astaghfiroullahal 'Azim</p>", compteur: 0 },
+            { id: 2, nom: "Soubhana Rabbiyal 'Azimi wa bihamdihi", estSalat: false, texte: "<span class='arabic-text text-3xl font-bold block text-center' dir='rtl'>سُبْحَانَ رَبِّيَ الْعَظِيمِ وَبِحَمْدِهِ</span><hr class='my-2.5 border-[#dfd2b9]'><p class='text-xs text-[#4a2c11] text-center font-bold font-sans bg-[#f3ebd9]/40 p-2 rounded-lg'>Soubhana Rabbiyal 'Azimi wa bihamdihi</p>", compteur: 0 },
+            { id: 3, nom: "Soubhana Rabbiyal A'la wa bihamdihi", estSalat: false, texte: "<span class='arabic-text text-3xl font-bold block text-center' dir='rtl'>سُبْحَانَ رَبِّيَ الْأَعْلَىٰ وَبِحَمْدِهِ</span><hr class='my-2.5 border-[#dfd2b9]'><p class='text-xs text-[#4a2c11] text-center font-bold font-sans bg-[#f3ebd9]/40 p-2 rounded-lg'>Soubhana Rabbiyal A'la wa bihamdihi</p>", compteur: 0 },
+            { id: 4, nom: "Soubhanallahi wa bihamdihi", estSalat: false, texte: "<span class='arabic-text text-3xl font-bold block text-center' dir='rtl'>سُبْحَانَ اللَّهِ وَبِحَمْدِهِ</span><hr class='my-2.5 border-[#dfd2b9]'><p class='text-xs text-[#4a2c11] text-center font-bold font-sans bg-[#f3ebd9]/40 p-2 rounded-lg'>Soubhanallahi wa bihamdihi</p>", compteur: 0 },
+            { id: 5, nom: "La ilaha illa Allahu al-maliku al-haqqu al-mubin", estSalat: false, texte: "<span class='arabic-text text-2xl font-bold block text-center' dir='rtl'>لَا إِلَٰهَ إِلَّا اللَّهُ الْمَلِكُ الْحَقُّ الْمُبِينُ</span><hr class='my-2.5 border-[#dfd2b9]'><p class='text-xs text-[#4a2c11] text-center font-bold font-sans bg-[#f3ebd9]/40 p-2 rounded-lg'>La ilaha illa Allahu al-maliku al-haqqu al-mubin</p>", compteur: 0 },
+            { id: 6, nom: "Alhamdoulillah", estSalat: false, texte: "<span class='arabic-text text-3xl font-bold block text-center' dir='rtl'>الْحَمْدُ لِلَّهِ</span><hr class='my-2.5 border-[#dfd2b9]'><p class='text-xs text-[#4a2c11] text-center font-bold font-sans bg-[#f3ebd9]/40 p-2 rounded-lg'>Alhamdoulillah</p>", compteur: 0 },
+            { id: 7, nom: "Allahoumma lakal hamdou...", estSalat: false, texte: "<span class='arabic-text text-2xl font-bold block text-center' dir='rtl'>اللَّهُمَّ لَكَ الْحَمْدُ كَمَا يَنْبَغِي لِجَلَالِ وَجْهِكَ وَلِعَظِيمِ سُلْطَانِكَ</span><hr class='my-2.5 border-[#dfd2b9]'><p class='text-xs text-[#4a2c11] text-center font-bold font-sans bg-[#f3ebd9]/40 p-2 rounded-lg'>Allahoumma lakal hamdou kama yanbaghi li jalali wajhika wa li 'azimi soultanik</p>", compteur: 0 },
+            { id: 8, nom: "Jaza Allahou sayyidana...", estSalat: false, texte: "<span class='arabic-text text-2xl font-bold block text-center' dir='rtl'>جَزَى اللَّهُ عَنَّا سَيِّدَنَا وَنَبِيَّنَا مُحَمَّدًا مَا هُوَ أَهْلُهُ</span><hr class='my-2.5 border-[#dfd2b9]'><p class='text-xs text-[#4a2c11] text-center font-bold font-sans bg-[#f3ebd9]/40 p-2 rounded-lg'>Jaza Allahou sayyidana wa nabiyyana Muhammadan ma houwa ahlouhou</p>", compteur: 0 },
+            { id: 9, nom: "Çallal lahou ala Mouhammad", estSalat: true, texte: "<span class='arabic-text text-3xl font-bold block text-center' dir='rtl'>صَلَّى اللَّهُ عَلَىٰ مُحَمَّدٍ</span><hr class='my-2.5 border-[#dfd2b9]'><p class='text-xs text-[#4a2c11] text-center font-bold font-sans bg-[#f3ebd9]/40 p-2 rounded-lg'>Çallal lahou ala Mouhammad</p>", compteur: 0 },
             {
-                id: 7,
+                id: 10,
                 nom: "Salat de Khadimou Rassoul",
                 estSalat: true,
-                texte: "<div class='custom-scroll max-h-60 overflow-y-auto px-1'><span class='arabic-text text-xl font-bold block text-center mb-3 leading-relaxed' dir='rtl'>بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ<br>اللَّهُمَّ بِحَقِّ وَجْهِكَ الْكَرِيمِ صَلِّ وَسَلِّمْ وَبَارِكْ عَلَىٰ سَيِّدِنَا وَمَوْلَانَا مُحَمَّدٍ وَعَلَىٰ آلِهِ وَصَحْبِهِ وَهَبْ لِشَيْخِنَا أَحْمَدَ ابْنِ مُحَمَّدٍ ابْنِ حَبِيبِ اللَّهِ مَا نَوَاهُ لِنَفْسِهِ وَلِأُمَّةِ رَسُولِ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ وَبَارِكْ مَا نَوَاهُ الشَّيْخُ أَشَمَدُ ابْنِ مُحَمَّدٍ اللَّهُمَّ يَا مُجِيبَ يَا رَبَّ الْعَالَمِينَ إِنَّكَ أَنْتَ الْوَهَّاب</span><hr class='my-2.5 border-[#dfd2b9]'><p class='text-[11px] text-[#4a2c11] text-left italic leading-relaxed font-bold font-sans bg-[#f3ebd9]/60 p-2.5 rounded-lg border border-[#dfd2b9]/50'>Bismillahir Rahmanir Rahim. Au nom d'Allah, le Tout Miséricordieux, le Très Miséricordieux. Ô Allah, par le droit de Ton Visage Généreux, bénis et accorde Ta paix à notre maître Muhammad, sa famille et ses compagnons...</p></div>",
+                texte: "<div class='custom-scroll max-h-60 overflow-y-auto px-1'><span class='arabic-text text-xl font-bold block text-center mb-3 leading-relaxed' dir='rtl'>بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ<br>اللَّهُمَّ بِحَقِّ وَجْهِكَ الْكَرِيمِ صَلِّ وَسَلِّمْ وَبَارِكْ عَلَىٰ سَيِّدِنَا وَمَوْلَانَا مُحَمَّدٍ وَعَلَىٰ آلِهِ وَصَحْبِهِ وَهَبْ لِشَيْخِنَا أَحْمَدَ ابْنِ مُحَمَّدٍ ابْنِ حَبِيبِ اللَّهِ مَا نَوَاهُ لِنَفْسِهِ وَلِأُمَّةِ رَسُولِ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ وَبَارِكْ مَا نَوَاهُ الشَّيْخُ أَشَمَدُ ابْنِ مُحَمَّدٍ اللَّهُمَّ يَا مُجِيبَ يَا رَبَّ الْعَالَمِينَ إِنَّكَ أَنْتَ الْوَهَّاب</span><hr class='my-2.5 border-[#dfd2b9]'><p class='text-[11px] text-[#4a2c11] text-left font-bold font-sans bg-[#f3ebd9]/60 p-2.5 rounded-lg border border-[#dfd2b9]/50 leading-relaxed'>Bismillahi Rahmani Rahimi. Allahoumma bihaqqi wajhikal karimi salli wa sallim wa barik 'ala sayyidina wa mawlana Muhammadin wa 'ala alihi wa sahbihi wa hab lichékhina Ahmadabni Muhammadibni Habibi Allahi ma nawahou linafsihi wa li oummati rassouli Allahi salla Allahou 'alayhi wa sallama wa barik ma nawahou chékhou Ahmadou bnou Muhammad. Allahoumma ya moudjibou ya rabbal 'alamina innaka antal wahhab.</p></div>",
                 compteur: 0
             },
             { 
-                id: 8, 
+                id: 11, 
                 nom: "Salatoul Fatiha", 
                 estSalat: true,
-                texte: "<div class='custom-scroll max-h-52 overflow-y-auto px-1'><span class='arabic-text text-2xl font-bold block text-center mb-3 leading-relaxed' dir='rtl'>بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ<br>اللَّهُمَّ صَلِّ عَلَىٰ سَيِّدِنَا مُحَمَّدٍ الْفَاتِحِ لِمَا أُغْلِقَ وَالْخَاتِمِ لِمَا سَبَقَ نَاصِرِ الْحَقِّ بِالْحَقِّ وَالْهَادِي إِلَىٰ صِرَاطِكَ الْمُسْتَقِيمِ وَعَلَىٰ آلِهِ حَقَّ قَدْرِهِ وَمِقْدَارِهِ الْعَظِيمِ</span><hr class='my-2.5 border-[#dfd2b9]'><p class='text-[11px] text-[#4a2c11] text-left italic leading-relaxed font-bold font-sans bg-[#f3ebd9]/60 p-2.5 rounded-lg border border-[#dfd2b9]/50'>Bismillahirahmanirahim. Ô Allah, accorde Ta bénédiction à notre seigneur Muhammad, qui a ouvert ce qui était clos, qui a clos ce qui a précédé, le défenseur de la Vérité par la Vérité, le guide vers Ton droit chemin...</p></div>", 
+                texte: "<div class='custom-scroll max-h-52 overflow-y-auto px-1'><span class='arabic-text text-2xl font-bold block text-center mb-3 leading-relaxed' dir='rtl'>بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ<br>اللَّهُمَّ صَلِّ عَلَىٰ سَيِّدِنَا مُحَمَّدٍ الْفَاتِحِ لِمَا أُغْلِقَ وَالْخَاتِمِ لِمَا سَبَقَ نَاصِرِ الْحَقِّ بِالْحَقِّ وَالْهَادِي إِلَىٰ صِرَاطِكَ الْمُسْتَقِيمِ وَعَلَىٰ آلِهِ حَقَّ قَدْرِهِ وَمِقْدَارِهِ الْعَظِيمِ</span><hr class='my-2.5 border-[#dfd2b9]'><p class='text-[11px] text-[#4a2c11] text-left font-bold font-sans bg-[#f3ebd9]/60 p-2.5 rounded-lg border border-[#dfd2b9]/50 leading-relaxed'>Allahoumma salli 'ala sayyidina Muhammadinil fatihi lima ougliqa wal khatimi lima sabaqa naciril haqqi bil haqqi wal hadi ila ciratikal moustaqimi wa 'ala alihi haqqa qadrihi wa miqdarihil 'azim.</p></div>", 
                 compteur: 0 
             },
             { 
-                id: 9, 
+                id: 12, 
                 nom: "Salatoul Oumiyi", 
                 estSalat: true,
-                texte: "<span class='arabic-text text-2xl font-bold block text-center mb-3 leading-relaxed' dir='rtl'>اللَّهُمَّ صَلِّ عَلَىٰ سَيِّدِنَا مُحَمَّدٍ النَّبِيِّ الْأُمِّيِّ وَعَلَىٰ آلِهِ وَصَحْبِهِ وَسَلِّمْ تَسْلِيمًا</span><hr class='my-2.5 border-[#dfd2b9]'><p class='text-xs text-[#4a2c11] text-left italic font-bold font-sans bg-[#f3ebd9]/60 p-2.5 rounded-lg border border-[#dfd2b9]/50'>Allahumma salli ala sayyidina Muhammad nabi ummi wa ala alihi wa sahbihi wa sallim taslima.<br><span class='text-[11px] opacity-90'>(« Ô Allah, accorde Tes bénédictions et Ta paix à notre seigneur Muhammad, le Prophète illettré »)</span></p>", 
+                texte: "<span class='arabic-text text-2xl font-bold block text-center mb-3 leading-relaxed' dir='rtl'>اللَّهُمَّ صَلِّ عَلَىٰ سَيِّدِنَا مُحَمَّدٍ النَّبِيِّ الْأُمِّيِّ وَعَلَىٰ آلِهِ وَصَحْبِهِ وَسَلِّمْ تَسْلِيمًا</span><hr class='my-2.5 border-[#dfd2b9]'><p class='text-xs text-[#4a2c11] text-left font-bold font-sans bg-[#f3ebd9]/60 p-2.5 rounded-lg border border-[#dfd2b9]/50'>Allahoumma salli 'ala sayyidina Muhammadinin nabiyyil oummiyi wa 'ala alihi wa sahbihi wa sallim taslima.</p>", 
                 compteur: 0 
             }
         ];
@@ -173,7 +177,7 @@
                 localCounts[defaut.id] = 0;
                 const card = document.createElement('div');
                 card.id = `card-${defaut.id}`;
-                card.className = "zikr-card rounded-2xl p-6 flex flex-col justify-between items-center relative overflow-hidden animate-fade-in";
+                card.className = "zikr-card rounded-2xl p-6 flex flex-col justify-between items-center relative overflow-hidden";
                 
                 card.innerHTML = `
                     <div class="w-full">
@@ -197,22 +201,18 @@
                         </div>
                     </div>
 
-                    <div class="flex flex-col gap-3 w-full items-center">
+                    <div class="w-full">
                         <div class="flex items-center space-x-3 w-full justify-center">
-                            <button onclick="reinitialiserLocal(${defaut.id})" class="w-12 h-12 bg-[#f3ebd9]/80 hover:bg-[#dfd2b9] text-[#4a2c11] rounded-xl flex items-center justify-center font-bold text-sm border border-[#dfd2b9]">
+                            <button onclick="reinitialiserLocal(${defaut.id})" class="w-12 h-14 bg-[#f3ebd9]/80 hover:bg-[#dfd2b9] text-[#4a2c11] rounded-xl flex items-center justify-center font-bold text-sm border border-[#dfd2b9]">
                                 <i class="fas fa-undo-alt"></i>
                             </button>
-                            <button onclick="incrementerLocal(${defaut.id})" class="flex-grow h-12 bg-[#854d0e] hover:bg-[#92400e] active:scale-[0.97] text-[#fbf6eb] rounded-xl flex items-center justify-center font-extrabold text-base shadow transition-all tracking-widest border-b-4 border-[#521c07]">
+                            <button onclick="incrementerDirect(${defaut.id})" class="flex-grow h-14 bg-[#854d0e] hover:bg-[#92400e] active:scale-[0.97] text-[#fbf6eb] rounded-xl flex items-center justify-center font-extrabold text-lg shadow transition-all tracking-widest border-b-4 border-[#521c07]">
                                 + 1
                             </button>
-                            <button onclick="decrementerLocal(${defaut.id})" class="w-12 h-12 bg-[#f3ebd9]/80 hover:bg-[#dfd2b9] text-[#4a2c11] rounded-xl flex items-center justify-center font-bold text-sm border border-[#dfd2b9]">
+                            <button onclick="decrementerDirect(${defaut.id})" class="w-12 h-14 bg-[#f3ebd9]/80 hover:bg-[#dfd2b9] text-[#4a2c11] rounded-xl flex items-center justify-center font-bold text-sm border border-[#dfd2b9]">
                                 -1
                             </button>
                         </div>
-
-                        <button id="btn-envoyer-${defaut.id}" onclick="envoyerAuCollectif(${defaut.id})" class="w-full py-2.5 bg-[#b4860b] text-[#4a2c11] text-xs font-black rounded-xl opacity-60 cursor-not-allowed transition-all tracking-wider uppercase border border-[#936c04] flex items-center justify-center gap-1.5">
-                            <i class="fas fa-cloud-upload-alt"></i> Envoyer au total collectif
-                        </button>
                     </div>
                 `;
                 container.appendChild(card);
@@ -258,27 +258,28 @@
             calculerTotalSalat();
         }
 
-        function incrementerLocal(id) {
+        function incrementerDirect(id) {
             localCounts[id] = (localCounts[id] || 0) + 1;
             document.getElementById(`local-text-${id}`).innerText = localCounts[id];
             
-            let btn = document.getElementById(`btn-envoyer-${id}`);
-            if (btn && localCounts[id] === 1) {
-                btn.classList.add('animate-pulse');
-                btn.classList.remove('opacity-60', 'cursor-not-allowed');
+            const index = zikrs.findIndex(z => z.id === id);
+            if (index !== -1) {
+                db.ref('zikrs/' + index + '/compteur').transaction((valeurActuelle) => {
+                    return (valeurActuelle || 0) + 1;
+                });
             }
         }
 
-        function decrementerLocal(id) {
+        function decrementerDirect(id) {
             if (localCounts[id] && localCounts[id] > 0) {
                 localCounts[id]--;
                 document.getElementById(`local-text-${id}`).innerText = localCounts[id];
-                if (localCounts[id] === 0) {
-                    let btn = document.getElementById(`btn-envoyer-${id}`);
-                    if (btn) {
-                        btn.classList.remove('animate-pulse');
-                        btn.classList.add('opacity-60', 'cursor-not-allowed');
-                    }
+                
+                const index = zikrs.findIndex(z => z.id === id);
+                if (index !== -1) {
+                    db.ref('zikrs/' + index + '/compteur').transaction((valeurActuelle) => {
+                        return (valeurActuelle && valeurActuelle > 0) ? valeurActuelle - 1 : 0;
+                    });
                 }
             }
         }
@@ -286,27 +287,6 @@
         function reinitialiserLocal(id) {
             localCounts[id] = 0;
             document.getElementById(`local-text-${id}`).innerText = 0;
-            let btn = document.getElementById(`btn-envoyer-${id}`);
-            if (btn) {
-                btn.classList.remove('animate-pulse');
-                btn.classList.add('opacity-60', 'cursor-not-allowed');
-            }
-        }
-
-        function envoyerAuCollectif(id) {
-            const aEnvoyer = localCounts[id] || 0;
-            if (aEnvoyer <= 0) return;
-
-            const index = zikrs.findIndex(z => z.id === id);
-            if (index !== -1) {
-                db.ref('zikrs/' + index + '/compteur').transaction((valeurActuelle) => {
-                    return (valeurActuelle || 0) + aEnvoyer;
-                }, (error, committed) => {
-                    if (committed) {
-                        reinitialiserLocal(id);
-                    }
-                });
-            }
         }
 
         function activerCodeSecret() {
@@ -338,14 +318,14 @@
                 secAccueil.classList.remove('hidden');
                 secAccueil.classList.add('flex');
                 secCompteurs.classList.add('hidden');
-                btnAccueil.className = "bg-[#b4860b] text-[#4a2c11] px-6 py-2.5 rounded-xl text-xs font-bold transition-all border border-[#936c04] tracking-wider shadow-md";
+                btnAccueil.className = "bg-[#dfd2b9] text-[#4a2c11] px-6 py-2.5 rounded-xl text-xs font-bold transition-all border border-[#d4c4a8] tracking-wider shadow-md";
                 btnCompteurs.className = "bg-[#92400e] text-[#fbf6eb] hover:bg-[#78350f] px-6 py-2.5 rounded-xl text-xs font-bold transition-all border border-[#78350f] tracking-wider shadow-md";
             } else {
                 secAccueil.classList.add('hidden');
                 secAccueil.classList.remove('flex');
                 secCompteurs.classList.remove('hidden');
                 btnAccueil.className = "bg-[#92400e] text-[#fbf6eb] hover:bg-[#78350f] px-6 py-2.5 rounded-xl text-xs font-bold transition-all border border-[#78350f] tracking-wider shadow-md";
-                btnCompteurs.className = "bg-[#b4860b] text-[#4a2c11] px-6 py-2.5 rounded-xl text-xs font-bold transition-all border border-[#936c04] tracking-wider shadow-md";
+                btnCompteurs.className = "bg-[#dfd2b9] text-[#4a2c11] px-6 py-2.5 rounded-xl text-xs font-bold transition-all border border-[#d4c4a8] tracking-wider shadow-md";
                 calculerTotalSalat();
             }
         }
