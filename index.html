@@ -8,6 +8,7 @@
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
         :root {
@@ -15,14 +16,15 @@
             --primary-light: #fdfbf7; 
             --secondary: #8c6239;     
             --accent: #d9a05b;        
-            --dark: #3d2a19;          /* Marron chaud plus adapté au lieu du noir */
+            --dark: #2d1f13;          
+            --bg-soft: #faf6ee;
             --success: #2e7d32;       
             --danger: #c62828;        
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #fcfaf2;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-soft);
             margin: 0;
             padding: 0;
             color: var(--dark);
@@ -34,47 +36,49 @@
         }
 
         .header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(135deg, var(--primary), var(--dark));
             color: #fdfbf7;
-            text-align: center;
-            padding: 10px 25px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            padding: 12px 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 100;
+            border-bottom: 2px solid var(--accent);
         }
 
-        .header h1 { margin: 0; font-size: 1.8rem; }
-        .header-right { display: flex; align-items: center; gap: 15px; }
+        .header h1 { margin: 0; font-size: 1.6rem; font-weight: 700; letter-spacing: -0.5px; }
+        .header-right { display: flex; align-items: center; gap: 20px; }
 
         .badge-date {
-            background-color: var(--accent);
+            background: linear-gradient(135deg, var(--accent), #f4c482);
             color: var(--primary);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 1.1rem;
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 8px rgba(217, 160, 91, 0.2);
         }
 
-        .menu-nav { display: flex; gap: 8px; }
+        .menu-nav { display: flex; gap: 10px; }
 
         .btn-menu {
-            background-color: rgba(255, 255, 255, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: white;
-            padding: 6px 14px;
-            font-size: 0.95rem;
-            font-weight: bold;
-            border-radius: 6px;
+            background-color: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #e0d8c8;
+            padding: 8px 16px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: 8px;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.25s ease;
         }
 
         .btn-menu:hover, .btn-menu.active {
             background-color: var(--accent);
             color: var(--primary);
             border-color: var(--accent);
+            box-shadow: 0 4px 12px rgba(219, 160, 91, 0.25);
         }
 
         .page-content {
@@ -82,174 +86,191 @@
         }
 
         .view-section {
-            display: none; width: 100%; height: 100%; box-sizing: border-box; padding: 20px;
+            display: none; width: 100%; height: 100%; box-sizing: border-box; padding: 24px;
         }
 
         .view-section.active { display: block; }
 
+        /* NOUVEAU DESIGN ACCUEIL PROFESSIONNEL ASYMÉTRIQUE */
         #view-accueil { 
             display: none; 
-            background-color: #2b1d11; 
-            position: relative;
+            background-color: var(--bg-soft); 
             padding: 0;
-            flex-direction: column;
+            height: 100%;
         }
         #view-accueil.active { display: flex; }
         
-        .poster-container {
-            position: relative;
+        .welcome-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
             width: 100%;
             height: 100%;
+        }
+
+        .welcome-left {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
+            padding: 60px;
+            box-sizing: border-box;
+            background: radial-gradient(circle at top left, #fff, var(--bg-soft));
         }
 
-        .full-poster {
-            width: 100%;
-            height: 100%;
-            object-fit: contain; /* Correction pour ne plus cacher le visage ou couper l'image */
+        .welcome-arabic-card {
+            background: white;
+            border-left: 5px solid var(--accent);
+            padding: 30px;
+            border-radius: 4px 16px 16px 4px;
+            box-shadow: 0 10px 30px rgba(75, 54, 33, 0.05);
+            margin-bottom: 40px;
         }
 
-        .overlay-arabic-message {
-            position: absolute;
-            top: 25px;
-            left: 5%;
-            right: 5%;
-            background: rgba(75, 54, 33, 0.9); /* Marron chaud translucide */
-            color: #fdfbf7;
-            padding: 15px 25px;
-            border-radius: 10px;
-            text-align: center;
-            font-size: 2.2rem; 
-            font-weight: bold;
-            border: 2px solid var(--accent);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
-            direction: rtl; 
-            font-family: 'Amiri', 'Traditional Arabic', Georgia, serif;
-            z-index: 10;
+        .welcome-arabic-text {
+            font-family: 'Amiri', serif;
+            font-size: 2.3rem;
+            line-height: 1.5;
+            color: var(--primary);
+            text-align: right;
+            direction: rtl;
         }
 
-        .overlay-dourous-info {
-            position: absolute;
-            bottom: 30px;
-            left: 5%;
-            right: 5%;
+        .welcome-info-card {
             background: linear-gradient(135deg, var(--primary), var(--dark));
-            color: #fdfbf7;
-            padding: 20px 30px;
-            border-radius: 15px;
-            text-align: center;
-            border: 2px solid var(--accent);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-            z-index: 10;
+            color: white;
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: 0 15px 35px rgba(45, 31, 19, 0.15);
+            border: 1px solid rgba(217, 160, 91, 0.2);
         }
-        .overlay-dourous-info h2 {
-            margin: 0 0 5px 0;
-            font-size: 1.8rem;
-            letter-spacing: 2px;
+
+        .welcome-info-card h2 {
+            margin: 0 0 10px 0;
+            font-size: 2rem;
             color: var(--accent);
-            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: -0.5px;
         }
-        .overlay-dourous-info p {
+
+        .welcome-info-card p {
             margin: 0;
-            font-size: 1.1rem;
+            font-size: 1.15rem;
+            color: #f3ede2;
+            line-height: 1.6;
             font-weight: 500;
-            color: #fcfaf2;
         }
+
+        .welcome-right {
+            background-color: #eae3d5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .pro-poster {
+            max-width: 95%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            border: 1px solid rgba(255,255,255,0.4);
+        }
+
+        /* FIN DU DESIGN ACCUEIL */
 
         .grid-layout {
-            display: grid; grid-template-columns: 1fr 1.8fr; gap: 15px; height: 100%;
+            display: grid; grid-template-columns: 1fr 1.8fr; gap: 20px; height: 100%;
         }
 
         .card-panel {
-            background: white; border-radius: 12px; padding: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid #e0d8c8; display: flex; flex-direction: column;
+            background: white; border-radius: 16px; padding: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid #eaddca; display: flex; flex-direction: column;
         }
 
         .card-panel h2 {
-            margin-top: 0; margin-bottom: 12px; color: var(--primary); border-bottom: 3px solid var(--accent); padding-bottom: 5px; font-size: 1.2rem;
+            margin-top: 0; margin-bottom: 16px; color: var(--primary); border-bottom: 3px solid var(--accent); padding-bottom: 8px; font-size: 1.25rem; font-weight: 700;
             display: flex; justify-content: space-between; align-items: center;
         }
 
         .kamil-container {
-            background: var(--primary-light); padding: 15px; border-radius: 10px; border: 1px solid #e0d8c8; display: flex; justify-content: space-between; align-items: center;
+            background: var(--primary-light); padding: 18px; border-radius: 12px; border: 1px solid #eaddca; display: flex; justify-content: space-between; align-items: center;
         }
 
-        .kamil-value { font-size: 2.8rem; font-weight: bold; color: var(--primary); }
+        .kamil-value { font-size: 3rem; font-weight: 800; color: var(--primary); }
 
         .objectif-chiffre-box {
-            font-size: 1.1rem;
-            color: #c62828 !important; 
-            font-weight: 800 !important;
+            font-size: 1.05rem;
+            color: var(--danger) !important; 
+            font-weight: 700 !important;
             margin-top: 6px;
             display: block;
         }
 
         .qasaid-grid {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 8px; overflow-y: auto; padding-right: 5px; flex: 1;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 10px; overflow-y: auto; padding-right: 5px; flex: 1;
         }
 
         .qasaid-item {
-            display: flex; align-items: center; justify-content: space-between; background: #fff; padding: 10px 14px; border-radius: 8px; border: 1px solid #e0d8c8;
+            display: flex; align-items: center; justify-content: space-between; background: #fff; padding: 12px 16px; border-radius: 10px; border: 1px solid #eaddca; transition: transform 0.2s;
         }
+        .qasaid-item:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.02); }
 
         .qasaid-item h3 { margin: 0; font-size: 1rem; color: var(--primary); font-weight: 700; }
         
-        .counter-box { display: flex; align-items: center; gap: 10px; }
+        .counter-box { display: flex; align-items: center; gap: 12px; }
 
         .score-display {
-            font-size: 1.8rem; font-weight: bold; color: var(--secondary); min-width: 50px; text-align: right;
+            font-size: 1.8rem; font-weight: 700; color: var(--secondary); min-width: 50px; text-align: right;
         }
 
-        .admin-btn-grid { display: none; gap: 4px; margin-top: 5px; }
-        .btn-mini { border: none; padding: 3px 6px; font-size: 0.75rem; font-weight: bold; cursor: pointer; border-radius: 4px; }
+        .admin-btn-grid { display: none; gap: 4px; margin-top: 6px; }
+        .btn-mini { border: none; padding: 4px 8px; font-size: 0.75rem; font-weight: 700; cursor: pointer; border-radius: 4px; }
         .btn-mini-saisie { background-color: var(--secondary); color: white; }
         .btn-mini-obj { background-color: #e2e8f0; color: #4a5568; }
         .btn-mini-delete { background-color: var(--danger); color: white; }
         
         .btn-action-rep {
-            display: none; color: white; border-radius: 50%; width: 32px; height: 32px; align-items: center; justify-content: center; font-size: 1.3rem; cursor: pointer; border: none; font-weight: bold;
+            display: none; color: white; border-radius: 50%; width: 34px; height: 34px; align-items: center; justify-content: center; font-size: 1.3rem; cursor: pointer; border: none; font-weight: bold;
         }
         .btn-rep-plus { background-color: var(--success); }
 
         .btn-ajouter-xassida {
-            display: none; background-color: var(--success); color: white; border: none; padding: 6px 12px; font-size: 0.85rem; font-weight: bold; border-radius: 5px; cursor: pointer;
+            display: none; background-color: var(--success); color: white; border: none; padding: 8px 16px; font-size: 0.85rem; font-weight: 700; border-radius: 6px; cursor: pointer;
         }
 
         .giant-card {
-            background: white; width: 96%; height: 95%; margin: 0 auto; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); border: 2px solid var(--accent); padding: 25px 40px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between; text-align: center;
+            background: white; width: 96%; height: 95%; margin: 0 auto; border-radius: 24px; box-shadow: 0 20px 50px rgba(0,0,0,0.08); border: 1px solid #eaddca; padding: 35px 50px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between; text-align: center;
         }
 
-        .xassida-title { font-size: 3.8rem; color: var(--primary); margin: 0; font-weight: 800; text-transform: uppercase; border-bottom: 5px solid var(--accent); padding-bottom: 10px; }
-        .stats-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 25px; margin: 15px 0; }
-        .stat-box { background: var(--primary-light); border: 1px solid #e0d8c8; padding: 15px; border-radius: 15px; }
-        .stat-label { font-size: 1.4rem; color: #555; font-weight: 600; margin-bottom: 5px; text-transform: uppercase; }
-        .stat-number { font-size: 4.8rem; font-weight: 900; color: var(--dark); }
-        .stat-box.reste-box { background-color: #f1f8e9; border-color: #c5e1a5; }
+        .xassida-title { font-size: 3.5rem; color: var(--primary); margin: 0; font-weight: 800; text-transform: uppercase; border-bottom: 4px solid var(--accent); padding-bottom: 12px; letter-spacing: -1px; }
+        .stats-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px; margin: 20px 0; }
+        .stat-box { background: var(--primary-light); border: 1px solid #eaddca; padding: 20px; border-radius: 16px; }
+        .stat-label { font-size: 1.2rem; color: #6e6557; font-weight: 600; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1px; }
+        .stat-number { font-size: 5rem; font-weight: 900; color: var(--dark); letter-spacing: -2px; }
+        .stat-box.reste-box { background-color: #f4f9f1; border-color: #c5e1a5; }
         .stat-box.reste-box .stat-number { color: var(--success); }
 
-        .progress-container { background-color: #e0e0e0; border-radius: 30px; height: 45px; width: 100%; position: relative; overflow: hidden; }
-        .progress-bar { background: linear-gradient(90deg, var(--secondary), var(--accent)); height: 100%; width: 0%; border-radius: 30px; transition: width 0.8s; }
-        .progress-text { position: absolute; width: 100%; height: 100%; top: 0; left: 0; display: flex; justify-content: center; align-items: center; font-size: 1.5rem; font-weight: bold; }
+        .progress-container { background-color: #e2dcd0; border-radius: 30px; height: 50px; width: 100%; position: relative; overflow: hidden; }
+        .progress-bar { background: linear-gradient(90deg, var(--primary), var(--accent)); height: 100%; width: 0%; border-radius: 30px; transition: width 0.8s ease-in-out; }
+        .progress-text { position: absolute; width: 100%; height: 100%; top: 0; left: 0; display: flex; justify-content: center; align-items: center; font-size: 1.4rem; font-weight: 700; color: var(--dark); }
 
-        .admin-controls-inline { display: none; justify-content: center; gap: 15px; margin-top: 10px; padding-top: 10px; border-top: 1px dashed #ccc; }
-        .btn-admin-action { border: none; padding: 10px 20px; font-size: 1.1rem; font-weight: bold; border-radius: 8px; cursor: pointer; }
-        .btn-plus { background-color: #2e7d32; color: white; }
+        .admin-controls-inline { display: none; justify-content: center; gap: 15px; margin-top: 15px; padding-top: 15px; border-top: 1px dashed #eaddca; }
+        .btn-admin-action { border: none; padding: 12px 24px; font-size: 1.05rem; font-weight: 700; border-radius: 10px; cursor: pointer; }
+        .btn-plus { background-color: var(--success); color: white; }
         .btn-saisie { background-color: var(--secondary); color: white; }
         .btn-obj { background-color: #cfd8dc; color: #263238; }
         .btn-delete-giant { background-color: var(--danger); color: white; }
 
-        .nav-controls { position: absolute; bottom: 20px; width: 96%; left: 2%; display: flex; justify-content: space-between; pointer-events: none; }
-        .btn-nav { background: var(--primary); color: white; border: none; padding: 10px 20px; font-size: 1.2rem; font-weight: bold; border-radius: 10px; cursor: pointer; pointer-events: auto; }
+        .nav-controls { position: absolute; bottom: 25px; width: 96%; left: 2%; display: flex; justify-content: space-between; pointer-events: none; }
+        .btn-nav { background: var(--primary); color: white; border: none; padding: 12px 24px; font-size: 1.1rem; font-weight: 700; border-radius: 12px; cursor: pointer; pointer-events: auto; box-shadow: 0 4px 14px rgba(0,0,0,0.1); }
         
-        #admin-kamil-box-actions { display: none; margin-top: 10px; }
+        #admin-kamil-box-actions { display: none; margin-top: 12px; }
         
         .image-container-kamil {
-            margin-top: 15px; text-align: center; flex: 1; display: flex; justify-content: center; align-items: center; overflow: hidden; border-radius: 10px; width: 100%;
+            margin-top: 20px; text-align: center; flex: 1; display: flex; justify-content: center; align-items: center; overflow: hidden; border-radius: 12px; width: 100%; border: 1px solid #eaddca;
         }
         .image-container-kamil img {
-            width: 100%; height: 100%; min-height: 280px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            width: 100%; height: 100%; min-height: 250px; object-fit: cover;
         }
     </style>
 
@@ -516,7 +537,6 @@
             if (!firebase.apps.length) {
                 firebase.initializeApp(firebaseConfig);
             }
-            // CORRECTION ICI : Liaison avec "compteurs_magal" comme vu sur ta capture d'écran Firebase
             dbRef = firebase.database().ref("compteurs_magal");
 
             buildGridHTMLStructure();
@@ -556,17 +576,21 @@
     <div class="page-content">
         
         <div id="view-accueil" class="view-section active">
-            <div class="poster-container">
-                <div class="overlay-arabic-message">
-                    وَقَضِّ حَوَائِجَ الَّذِينَ دَامُوا فِي خِدْمَتِي وَهَبْ لَهُمْ مَا رَامُوا
+            <div class="welcome-grid">
+                <div class="welcome-left">
+                    <div class="welcome-arabic-card">
+                        <div class="welcome-arabic-text">
+                            وَقَضِّ حَوَائِجَ الَّذِينَ دَامُوا فِي خِدْمَتِي وَهَبْ لَهُمْ مَا رَامُوا
+                        </div>
+                    </div>
+                    <div class="welcome-info-card">
+                        <h2>Suivi des Dourous & des Kamils</h2>
+                        <p>Organisation Générale des Lectures du Saint Coran et des Khassidas • Édition 2026</p>
+                    </div>
                 </div>
-                
-                <div class="overlay-dourous-info">
-                    <h2>Suivi des Dourous & des Kamils</h2>
-                    <p>Organisation Générale des Lectures du Saint Coran et des Khassidas • Édition 2026</p>
+                <div class="welcome-right">
+                    <img src="photo-magal.jpeg" alt="Affiche Officielle Grand Magal" class="pro-poster">
                 </div>
-
-                <img src="photo-magal.jpeg" alt="Affiche Grand Magal" class="full-poster">
             </div>
         </div>
 
@@ -576,7 +600,7 @@
                     <h2>Lectures du Saint Coran</h2>
                     <div class="kamil-container">
                         <div>
-                            <span style="font-weight: bold; font-size:1.1rem; color: var(--primary); display:block;">Kamil (Coran)</span>
+                            <span style="font-weight: 700; font-size:1.1rem; color: var(--primary); display:block;">Kamil (Coran)</span>
                             <span class="objectif-chiffre-box">Objectif : <span id="obj-kamil">28</span></span>
                             <div class="admin-btn-grid" id="admin-kamil-box">
                                 <button class="btn-mini btn-mini-saisie" onclick="modifierSaisie('kamil', 'Coran')">Saisie</button>
@@ -587,7 +611,7 @@
                     </div>
                     
                     <div id="admin-kamil-box-actions">
-                        <button class="btn-mini-saisie" onclick="incrementerDirect('kamil')" style="width:100%; padding:10px; border-radius:6px; border:none; font-weight:bold; cursor:pointer; background-color: var(--success); color: white;">+ Ajouter Kamil</button>
+                        <button class="btn-mini-saisie" onclick="incrementerDirect('kamil')" style="width:100%; padding:12px; border-radius:8px; border:none; font-weight:bold; cursor:pointer; background-color: var(--success); color: white; box-shadow: 0 4px 10px rgba(46, 125, 50, 0.2);">+ Ajouter Kamil</button>
                     </div>
                     
                     <div class="image-container-kamil">
