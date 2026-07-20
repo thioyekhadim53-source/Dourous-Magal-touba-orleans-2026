@@ -12,11 +12,11 @@
 
     <style>
         :root {
-            /* LES COULEURS EXACTES DE TON AFFICHE AVEC LE CHEIKH */
-            --primary: #5D2E1E;       /* Le vrai marron chocolat de la photo */
-            --bg-poster: #EFE3C3;     /* Le vrai beige doux de la photo (pas de blanc, pas de rose) */
+            /* NUANCES AJUSTÉES ET ÉCLAURCIES DEPUIS L'AFFICHE DU CHEIKH */
+            --primary: #703E2B;       /* Le marron plus clair et chaleureux de l'affiche */
+            --bg-poster: #EFE3C3;     /* Le beige doux d'origine */
             --accent: #D9A05B;        /* L'or de l'affiche */
-            --dark: #2F140A;          
+            --dark: #4A2416;          /* Version légèrement assombrie uniquement pour le texte lisible */
             --success: #2e7d32;       
             --danger: #c62828;        
         }
@@ -39,7 +39,7 @@
         }
 
         .header {
-            background: linear-gradient(135deg, var(--primary), var(--dark));
+            background: var(--primary); /* Suppression du dégradé noir, marron clair pur */
             color: var(--bg-poster);
             padding: 10px 30px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
@@ -67,8 +67,8 @@
         .menu-nav { display: flex; gap: 8px; }
 
         .btn-menu {
-            background-color: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background-color: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.25);
             color: var(--bg-poster);
             padding: 6px 14px;
             font-size: 0.85rem;
@@ -140,7 +140,6 @@
             box-sizing: border-box;
         }
 
-        /* MISE EN PAGE DE L'ARABE : ESPACE CENTRAL PLUS PETIT ET MODÉRÉ */
         .arabic-table {
             width: 90%;
             direction: rtl;
@@ -164,10 +163,8 @@
         }
 
         .shattr-space {
-            width: 6%; /* Espace central réduit pour ne pas faire d'écart énorme */
+            width: 6%; 
             text-align: center;
-            color: var(--accent);
-            font-size: 1.2rem;
         }
 
         .shattr-2 {
@@ -187,7 +184,7 @@
         }
 
         .welcome-info-card {
-            background: linear-gradient(135deg, var(--primary), var(--dark));
+            background: var(--primary);
             color: white;
             padding: 15px;
             border-radius: 12px;
@@ -228,13 +225,12 @@
             object-fit: cover; 
         }
 
-        /* STRUCTURE DES PAGES TOTALEMENT SUR FOND BEIGE, SANS FOND BLANC */
         .grid-layout {
             display: grid; grid-template-columns: 1fr 1.7fr; gap: 20px; height: 100%; padding: 20px; box-sizing: border-box;
         }
 
         .card-panel {
-            background: var(--bg-poster); /* Remplacement du blanc par le vrai beige uniforme */
+            background: var(--bg-poster); 
             border-radius: 14px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); border: 2px solid var(--accent); display: flex; flex-direction: column; height: 100%; box-sizing: border-box; overflow: hidden;
         }
 
@@ -578,18 +574,18 @@
                         <table class="arabic-table">
                             <tr>
                                 <td class="shattr-1">وَقَضِّ حَوَائِجَ الَّذِينَ دَامُوا</td>
-                                <td class="shattr-space">=</td>
+                                <td class="shattr-space"></td>
                                 <td class="shattr-2">فِي خِدْمَتِي وَهَبْ لَهُمْ مَا رَامُوا</td>
                             </tr>
                             <tr>
                                 <td class="shattr-1">وَارْزُقْهُمُ الْإِيمَانَ وَالْإِسْلَامَا</td>
-                                <td class="shattr-space">=</td>
+                                <td class="shattr-space"></td>
                                 <td class="shattr-2">وَالْفَتْحَ وَالْإِحْسَانَ وَاسْتِسْلَامَا</td>
                             </tr>
                             <tr>
                                 <td class="shattr-1">وَجَازِهِمْ عَنِّي بِالْغُفْرَانِ</td>
-                                <td class="shattr-space">=</td>
-                                <td class="shattr-2">وَبِالْكَرَامَاتِ وَبِالرِّضْوَانِ</td>
+                                <td class="shattr-space"></td>
+                                <td class="shattr-2">وَبِالْكَرَAMَاتِ وَبِالرِّضْوَانِ</td>
                             </tr>
                         </table>
 
