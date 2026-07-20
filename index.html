@@ -12,11 +12,11 @@
 
     <style>
         :root {
-            /* NUANCES AJUSTÉES ET ÉCLAURCIES DEPUIS L'AFFICHE DU CHEIKH */
-            --primary: #703E2B;       /* Le marron plus clair et chaleureux de l'affiche */
-            --bg-poster: #EFE3C3;     /* Le beige doux d'origine */
+            /* COULEURS EXACTES EXTRAITES DE L'AFFICHE DU CHEIKH */
+            --primary: #69291B;       /* Le vrai marron de la photo du Cheikh */
+            --bg-poster: #F4EAD3;     /* Le vrai fond beige sable de l'affiche */
             --accent: #D9A05B;        /* L'or de l'affiche */
-            --dark: #4A2416;          /* Version légèrement assombrie uniquement pour le texte lisible */
+            --dark: #42150D;          
             --success: #2e7d32;       
             --danger: #c62828;        
         }
@@ -39,7 +39,7 @@
         }
 
         .header {
-            background: var(--primary); /* Suppression du dégradé noir, marron clair pur */
+            background: var(--primary); 
             color: var(--bg-poster);
             padding: 10px 30px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
@@ -151,7 +151,7 @@
             font-family: 'Amiri', serif;
             font-size: 1.7rem;
             line-height: 1.8;
-            color: #ffffff;
+            color: var(--bg-poster); /* LES BAÏTES SONT ÉCRITS EN BEIGE MAINTENANT */
             font-weight: 700;
             padding: 6px 0;
             white-space: nowrap;
@@ -175,7 +175,7 @@
         .welcome-translation {
             margin-top: 15px;
             padding-top: 15px;
-            border-top: 1px dashed rgba(239, 227, 195, 0.25);
+            border-top: 1px dashed rgba(244, 234, 211, 0.25);
             font-size: 0.95rem;
             color: var(--bg-poster);
             line-height: 1.5;
@@ -585,8 +585,7 @@
                             <tr>
                                 <td class="shattr-1">وَجَازِهِمْ عَنِّي بِالْغُفْرَانِ</td>
                                 <td class="shattr-space"></td>
-                                <td class="shattr-2">وَبِالْكَرَAMَاتِ وَبِالرِّضْوَانِ</td>
-                            </tr>
+                                <td class="shattr-2">وَبِالْكَرَامَاتِ وَبِالرِّضْوَانِ</td> </tr>
                         </table>
 
                         <div class="welcome-translation">
